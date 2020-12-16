@@ -135,8 +135,8 @@
 					</view>
 		</view>
 		<view class="button-container">
-			<button type="default" class="button-cancel">取消</button>
-			<button type="default" class="button-submit">提交</button>
+			<button type="default" class="button-cancel" @click="cancelClick">取消</button>
+			<button type="default" class="button-submit" @click="submitClick()">提交</button>
 		</view>
 	</view>
 </template>
@@ -145,6 +145,11 @@
 	import cityDatas from '../../components/mpvue-citypicker/city-data/city.area.js'
 	import uniPopup from '@/components/uni-popup/uni-popup.vue'
 	export default {
+		submitClick(){
+			uni.navigateTo({
+				url: '../payment/payment'
+			});
+		},
 		components: {
 					uniPopup
 				},
@@ -180,13 +185,25 @@
 					checkThree: null,
 		        }
 		    },
-			onLoad() {
-			 
-					},
+			onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
+			        console.log(option.id); //打印出上个页面传递的参数。
+			        console.log(option.name); //打印出上个页面传递的参数。
+			    },
 			watch: {
 			 
 					},
 			methods: {
+				submitClick(){
+					uni.navigateTo({
+					    url: '../payment/payment'
+					})
+				},
+				cancelClick(){
+					uni.navigateTo({
+					    url: '../index/index'
+					})
+				},
+				
 			    bindPickerChange: function(e) {
 			        console.log('picker发送选择改变，携带值为', e.target.value)
 			        this.index = e.target.value

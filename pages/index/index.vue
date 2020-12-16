@@ -1,51 +1,68 @@
 <template>
 	<view class="content">
 		<view  class="img-container">
-			<image class="logo" src="/static/banner@2x.png"></image>
+			<image class="logo" src="/static/banner.png"></image>
 		</view>
 		<view class="list-container">
-		<view class="item">
-			<view class="item-left">
-			<image src="/static/hosp_image_1.png" class="icon"/>
-			<view class="hospital-name">郑州大学第一附属医院医院</view>
+				<view class="item" @click="handleClick()">
+					<view class="item-left">
+					<image src="/static/hosp_image_1.png" class="icon"/>
+					    <view class="hospital-name">郑州大学第一附属医院医院</view>
+					</view>
+					<image src="../../static/nav_ico_open.png" class="nav"></image>
+				</view>
+			<view class="item" @click="handleClick()">
+				<view class="item-left">
+					<image src="/static/hosp_image_2.png" class="icon"/>
+					<view class="hospital-name">河南省人民医院医院</view>
+				</view>
+				<image src="../../static/nav_ico_open.png" class="nav"></image>
 			</view>
-			<image src="../../static/nav_ico_open.png" class="nav"></image>
-		</view>
-		<view class="item">
-			<view class="item-left">
-				<image src="/static/hosp_image_2.png" class="icon"/>
-				<view class="hospital-name">河南省人民医院医院</view>
+			<view class="item" @click="handleClick()">
+				<view class="item-left">
+					<image src="/static/hosp_image_3.png" class="icon"/>
+					<view class="hospital-name">河南省中医院医院</view>
+				</view>
+				<image src="../../static/nav_ico_open.png" class="nav"></image>
 			</view>
-			<image src="../../static/nav_ico_open.png" class="nav"></image>
-		</view>
-		<view class="item">
-			<view class="item-left">
-				<image src="/static/hosp_image_3.png" class="icon"/>
-				<view class="hospital-name">河南省中医院医院</view>
+			<view class="item" @click="handleClick()">
+				<view class="item-left">
+					<image src="/static/hosp_image_4.png" class="icon"/>
+					<view class="hospital-name">郑州大学第三附属医院医院</view>
+				</view>
+				<image src="../../static/nav_ico_open.png" class="nav"></image>
 			</view>
-			<image src="../../static/nav_ico_open.png" class="nav"></image>
-		</view>
-		<view class="item">
-			<view class="item-left">
-				<image src="/static/hosp_image_4.png" class="icon"/>
-				<view class="hospital-name">郑州大学第三附属医院医院</view>
+			<view class="item" @click="handleClick()">
+				<view class="item-left">
+					<image src="/static/hosp_image_0.png" class="icon"/>
+					<view class="hospital-name">无图标的医院</view>
+				</view>
+				<image src="../../static/nav_ico_open.png" class="nav"></image>
 			</view>
-			<image src="../../static/nav_ico_open.png" class="nav"></image>
-		</view>
-		<view class="item">
-			<view class="item-left">
-				<image src="/static/hosp_image_0.png" class="icon"/>
-				<view class="hospital-name">无图标的医院</view>
-			</view>
-			<image src="../../static/nav_ico_open.png" class="nav"></image>
-		</view>
-		</view>
+	  </view>
 		
 	</view>
 </template>
 
 <script>		
- </script>
+    export default {
+		data() {
+			return {
+				title: 'Hello'
+			}
+		},
+		onLoad() {
+
+		},
+		methods: {
+			handleClick(){
+				uni.navigateTo({
+					url: '../submitInfo/submitInfo'
+				});
+			}
+		}
+	}
+</script>
 
 <style lang="less"> 
 	.content {

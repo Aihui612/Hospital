@@ -36,10 +36,10 @@
 					合计:55.3元
 				</view>
 			</view>
-			<view class="button-container1">
+			<view class="button-container1" @click="payClick">
 				<view class="button-pay">支付</view>	
 			</view>
-			<view class="button-container2">
+			<view class="button-container2" @click="cancelpayClick">
 				<view class="button-cancel">取消</view>
 			</view>
 			</view>
@@ -50,6 +50,16 @@
 
 <script>
 	export default {
+		payClick(){
+			uni.navigateTo({
+				url: '../index/index'
+			});
+		},
+		cancelpayClick(){
+			uni.navigateTo({
+				url: '../submitInfo/submitInfo'
+			});
+		},
 		data() {
 			return {
 				imageURL: "/static/image_list.png"
@@ -108,7 +118,7 @@
 					margin-bottom: 28rpx;
 			    	width: 108px;
 			    	height: 35px;
-			    	font-size: 15px;
+			    	font-size: 14px;
 			    	font-family: PingFang SC;
 			    	font-weight: 100;
 			    	color: #FF7C42;
