@@ -1,6 +1,6 @@
 {
-    "name" : "dfs",
-    "appid" : "__UNI__EDC4803",
+    "name" : "医院",
+    "appid" : "__UNI__35D03B9",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -61,7 +61,12 @@
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : ""
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true
@@ -72,7 +77,30 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
+    },
+    "h5" : {
+        "uniStatistics" : {
+            "enable" : true
+        },
+        "router" : {
+            "mode" : "hash"
+        },
+        "devServer" : {
+            "https" : false
+        },
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        },
+        "sdkConfigs" : {
+            "maps" : {
+                "qqmap" : {
+                    "key" : ""
+                }
+            }
+        }
     }
 }
