@@ -44,7 +44,8 @@
 	</view>
 </template>
 
-<script>		
+<script>	
+import {getHospitalList } from '../../servers/api.js';	
     export default {
 		data() {
 			return {
@@ -52,7 +53,17 @@
 			}
 		},
 		onLoad() {
-
+ 
+		},
+		mounted(){
+		// 挂载时执行调用接口请求
+		getHospitalList()
+		.then(res=>{
+			console.log(res);
+		})
+		.catch(err=>{
+			console.error(err);
+		})
 		},
 		methods: {
 			handleClick(){
