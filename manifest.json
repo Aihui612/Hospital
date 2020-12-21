@@ -55,6 +55,42 @@
     },
     /* 快应用特有相关 */
     "quickapp" : {},
+	"h5" : {
+	      "title" : "医院",
+	      "router" : {
+	          "mode" : "hash"
+	      },
+	      "devServer" : {
+	          "https" : false,
+	          "disableHostCheck" : true,
+	          "proxy" : {
+	              "/prod-api" : {
+	                 //"target" : "https://admin.shunlukeji.com",
+	                   "target": "http://syc320.320.io/",
+	                  "changeOrigin" : true,
+	                  "pathRewrite" : {
+	                      "^/prod-api" : "" //线上接口注释,线下接口取消注释
+	                  }
+	              }
+	          }
+	      },
+	      // "^/api" : ""
+	      "optimization" : {
+	          "treeShaking" : {
+	              "enable" : true
+	          }
+	      },
+	      "uniStatistics" : {
+	          "enable" : true
+	      },
+	      "sdkConfigs" : {
+	          "maps" : {
+	              "qqmap" : {
+	                  "key" : "JA4BZ-VQTWO-CZRWL-SCPQ2-7T2YK-WDBZ3"
+	              }
+	          }
+	      }
+	  },
     /* 小程序特有相关 */
     "mp-weixin" : {
         "appid" : "",

@@ -5,5 +5,5 @@
 
 // swagger 地址  http://syc320.320.io/swagger-ui.html 
 module.exports={
-    loadUrl:'http://syc320.320.io/',
+    loadUrl:'http://syc320.320.io',
 }
