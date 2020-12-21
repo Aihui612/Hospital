@@ -177,25 +177,7 @@ function erry(e){
 		icon: "none",
 
 	}); 
-	console.log(e.data.msg=='')
-		console.log(e.data.msg=='null')
-	if(e.data!=''&&e.data.msg!=''){
-	if(e.data.msg.indexOf('登录')!=-1){
-		uni.removeStorageSync('Authorization');
-		uni.navigateTo({
-		    url: '/pages/index/login'
-		});
 
-	} }
-	/* var Authorization = uni.getStorageSync('Authorization');
-	if(e.data!=''&&e.data.msg!=''||Authorization==''){
-	
-	if(e.data.msg.indexOf('认证失败')!=-1){
-		uni.removeStorageSync('Authorization');
-		uni.navigateTo({
-		    url: '/pages/index/login'
-		});
-	} } */
 }
 // 请求拦截(请求发出前处理请求)
 // axios.interceptors.request.use(

@@ -45,7 +45,7 @@
 </template>
 
 <script>	
-import {getHospitalList } from '../../servers/api.js';	
+import indexApi from '../../serves/api.js';	
     export default {
 		data() {
 			return {
@@ -57,12 +57,12 @@ import {getHospitalList } from '../../servers/api.js';
 		},
 		mounted(){
 		// 挂载时执行调用接口请求
-		getHospitalList()
+		indexApi.getHospitalList()
 		.then(res=>{
 			console.log(res);
 		})
 		.catch(err=>{
-			console.error(err);
+			console.log(err);
 		})
 		},
 		methods: {
