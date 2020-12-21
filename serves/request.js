@@ -19,7 +19,7 @@ export function request({
 	// #endif
 	// #ifdef H5
 	var url1 = url
-	var url1 = config.loadH5Url+url
+	var url1 = config.loadUrl+url
 	// #endif
 	if (!loading) {
 		uni.showLoading({
@@ -177,16 +177,7 @@ function erry(e){
 		icon: "none",
 
 	}); 
-	console.log(e.data.msg=='')
-		console.log(e.data.msg=='null')
-	if(e.data!=''&&e.data.msg!=''){
-	if(e.data.msg.indexOf('登录')!=-1){
-		uni.removeStorageSync('Authorization');
-		uni.navigateTo({
-		    url: '/pages/index/login'
-		});
 
-	} }
 	/* var Authorization = uni.getStorageSync('Authorization');
 	if(e.data!=''&&e.data.msg!=''||Authorization==''){
 	

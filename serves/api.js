@@ -23,6 +23,7 @@ const indexApi = {
 		return request({
 		  method: 'Get', 
 		  url: '/api/wu/hospital/list',
+		  params:params
 		})
     },
     
