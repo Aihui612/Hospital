@@ -53,9 +53,6 @@ import indexApi from '../../serves/api.js';
 			}
 		},
 		onLoad() {
- 
-		},
-		mounted(){
 		// 挂载时执行调用接口请求
 		indexApi.getHospitalList()
 		.then(res=>{
@@ -64,6 +61,9 @@ import indexApi from '../../serves/api.js';
 		.catch(err=>{
 			console.log(err);
 		})
+		},
+		mounted(){
+	
 		},
 		methods: {
 			handleClick(){
