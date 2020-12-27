@@ -29,7 +29,18 @@ const indexApi = {
 		  params:params
 		})
     },
-    
+    /**
+     * 
+     * @description '/api/wu/apply/applySub', 打印申请提交
+    */
+	postApplySubInfo(params){
+		return request({
+		  method: 'Postquery', 
+		  url: '/api/wu/apply/applySub',
+		  params: params
+		})
+	},
+	
     /**
      * 
      * @description api/wu/hospital/{id} 查询具体某个医院详情

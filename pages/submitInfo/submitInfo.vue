@@ -12,7 +12,7 @@
 						<view class="name-text">姓名</view>
 						<image src="../../static/icon_tip.png" class="icon-tip"></image>
 					</view>
-					<input class="item-input" name="input" placeholder="请输入姓名" />
+					<input class="item-input" name="input" placeholder="请输入姓名"  v-model="sumbitInfo.name"/>
 				</view>
 				<view class="item">
 					<view class="name-picture">
@@ -22,7 +22,7 @@
 					<view class="sdsd">
 						<text class="item-input2">
 							<view class="uni-list-cell-db">
-							    <picker @change="bindPickerChange" :value="index" :range="array">
+							    <picker @change="bindPickerChange" :value="sumbitInfo.sex" :range="array">
 							    <view class="uni-input">{{array[index]}}</view>
 							    </picker>
 							</view>
@@ -34,14 +34,14 @@
 						<view class="name-text">身份证号</view>
 						<image src="../../static/icon_tip.png" class="icon-tip"></image>
 					</view>
-					<input class="item-input" name="input" placeholder="请输入身份证号" />
+					<input class="item-input" name="input" placeholder="请输入身份证号" v-model="sumbitInfo.cardNo"/>
 				</view>
 				<view class="item">
 					<view class="name-picture">
 						<view class="name-text">出院证号</view>
 						<image src="../../static/icon_tip.png" class="icon-tip"></image>
 					</view>
-					<input class="item-input" name="input" placeholder="请输入出院证号" />
+					<input class="item-input" name="input" placeholder="请输入出院证号"  v-model="sumbitInfo.hospitalCardNo"/>
 				</view>
 			</view>
 		</view>
@@ -58,14 +58,14 @@
 							<view class="name-text">收件人姓名</view>
 							<image src="../../static/icon_tip.png" class="icon-tip"></image>
 						</view>
-						<input class="item-input" name="input" placeholder="请输入收件人姓名" />
+						<input class="item-input" name="input" placeholder="请输入收件人姓名" v-model="sumbitInfo.receiveName" />
 					</view>
 					<view class="item">
 						<view class="name-picture">
 							<view class="name-text">收件人联系电话</view>
 							<image src="../../static/icon_tip.png" class="icon-tip"></image>
 						</view>
-						<input class="item-input" name="input" placeholder="请输入收件人联系电话" />
+						<input class="item-input" name="input" placeholder="请输入收件人联系电话" v-model="sumbitInfo.receiveMobile"/>
 					</view>
 					<view  class="item">
 						<view class="name-picture">
@@ -130,7 +130,7 @@
 							<view class="name-text">详细地址</view>
 							<image src="../../static/icon_tip.png" class="icon-tip"></image>
 						</view>
-						<input class="item-input1" name="input" placeholder="请输入详细地址" />
+						<input class="item-input1" name="input" placeholder="请输入详细地址" v-model="sumbitInfo.addressDetails"/>
 					</view>
 					</view>
 		</view>
@@ -144,16 +144,15 @@
 <script>
 	import cityDatas from '../../components/mpvue-citypicker/city-data/city.area.js'
 	import uniPopup from '@/components/uni-popup/uni-popup.vue'
+	import indexApi from '../../serves/api.js';	
 	export default {
-		submitClick(){
-			uni.navigateTo({
-				url: '../payment/payment'
-			});
-		},
+	
+		
 		components: {
 					uniPopup
 				},
 		data() {
+			
 		        const currentDate = this.getDate({
 		            format: true
 		        })
@@ -183,17 +182,50 @@
 					checkOne: null,
 					checkTwo: null,
 					checkThree: null,
+					hospitalId: null,
+					sumbitInfo:{
+						  "addressDetails": "",
+						  "cardNo": "",
+						  "city": "",
+						  "county": "",
+						  "hospitalCardNo": "",
+						  "hospitalId": 0,
+						  "name": "",
+						  "province": "",
+						  "receiveMobile": "",
+						  "receiveName": "",
+						  "sex": 0
+						}
 		        }
 		    },
 			onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
 			        console.log(option.id); //打印出上个页面传递的参数。
-			        console.log(option.name); //打印出上个页面传递的参数。
+			        this.hospitalId=option.id;
 			    },
 			watch: {
 			 
 					},
 			methods: {
+				
+				
 				submitClick(){
+					let sumbitInfo=this.sumbitInfo
+					sumbitInfo.hospitalId=this.hospitalId
+					let params=sumbitInfo;
+				
+						console.log(params);
+					
+					indexApi.postApplySubInfo(params)
+					.then(res=>{
+						if(res&&res.code==200){
+							console.log(res)
+						}
+					})
+					.catch(err=>{
+						console.error(err);
+					})
+					
+					
 					uni.navigateTo({
 					    url: '../payment/payment'
 					})
@@ -271,6 +303,7 @@
 								this.cityShow = true
 								this.areaShow = false
 								this.cityData = data.cityList
+								this.sumbitInfo.province = data.name
 							},
 							cityEvent(data, index) {
 								this.checkTwo = index
@@ -280,10 +313,12 @@
 								this.cityShow = false
 								this.areaShow = true
 								this.areaData = data.areaList
+								this.sumbitInfo.city = data.name
 							},
 							areaEvent(data, index) {
 								this.checkThree = index
 								this.selectList[2].txt = data.name
+								this.sumbitInfo.county = data.name
 			}
 		}
 	}

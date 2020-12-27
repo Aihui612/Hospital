@@ -4,41 +4,16 @@
 			<image class="logo" src="/static/banner.png"></image>
 		</view>
 		<view class="list-container">
-				<view class="item" @click="handleClick()">
-					<view class="item-left">
-					<image src="/static/hosp_image_1.png" class="icon"/>
-					    <view class="hospital-name">郑州大学第一附属医院医院</view>
+				<template v-for="item in hospitalList" >
+					<view class="item" @click="handleClick(item.id)" :key="item.id">
+						<view class="item-left">
+						<image :src="item.logoImg" class="icon"/>
+						    <view class="hospital-name">{{item.name}}</view>
+						</view>
+						<image src="../../static/nav_ico_open.png" class="nav"></image>
 					</view>
-					<image src="../../static/nav_ico_open.png" class="nav"></image>
-				</view>
-			<view class="item" @click="handleClick()">
-				<view class="item-left">
-					<image src="/static/hosp_image_2.png" class="icon"/>
-					<view class="hospital-name">河南省人民医院医院</view>
-				</view>
-				<image src="../../static/nav_ico_open.png" class="nav"></image>
-			</view>
-			<view class="item" @click="handleClick()">
-				<view class="item-left">
-					<image src="/static/hosp_image_3.png" class="icon"/>
-					<view class="hospital-name">河南省中医院医院</view>
-				</view>
-				<image src="../../static/nav_ico_open.png" class="nav"></image>
-			</view>
-			<view class="item" @click="handleClick()">
-				<view class="item-left">
-					<image src="/static/hosp_image_4.png" class="icon"/>
-					<view class="hospital-name">郑州大学第三附属医院医院</view>
-				</view>
-				<image src="../../static/nav_ico_open.png" class="nav"></image>
-			</view>
-			<view class="item" @click="handleClick()">
-				<view class="item-left">
-					<image src="/static/hosp_image_0.png" class="icon"/>
-					<view class="hospital-name">无图标的医院</view>
-				</view>
-				<image src="../../static/nav_ico_open.png" class="nav"></image>
-			</view>
+				</template>
+
 	  </view>
 		
 	</view>
@@ -46,6 +21,8 @@
 
 <script>	
 import indexApi from '../../serves/api.js';	
+import config from '../../serves/config.js';
+
     export default {
 		data() {
 			return {
@@ -68,8 +45,7 @@ import indexApi from '../../serves/api.js';
 		},
 		mounted(){
 	  if(!window.localStorage.getItem('openId')){ // 如果缓存localStorage中没有微信openId，则需用code去后台获取
-	            // this.getCode() 
-				// this.wxAuthorize();
+	              //this.getCode() 
 	        } else {
 	            // 别的业务逻辑
 			}
@@ -79,7 +55,7 @@ import indexApi from '../../serves/api.js';
 			 * @description  账号登录
 			 * */
 			 handleAccountLogin(){
-				let params={code:'061WWEFa1s6neA0kRyIa1IxVv23WWEF6'}
+				let params={code:'021R6bGa1ZI4fA0azCHa1AQWrO1R6bGm'}
 				indexApi.accountLogin(params)
 				.then(res=>{
 					console.log(res);
@@ -105,7 +81,11 @@ import indexApi from '../../serves/api.js';
 				  .then(res=>{
 				  	console.log(res);
 					if(res&&res.code==200){
-						this.hospitalList=res.data;
+						let hospitalList=res.data;
+						for(let item of hospitalList){
+							item.logoImg = config.loadUrl+item.logoImg
+						}
+						this.hospitalList=hospitalList;
 					}
 					
 				  })
@@ -143,9 +123,10 @@ import indexApi from '../../serves/api.js';
 			                }
 			                return theRequest
 			            },
-			handleClick(){
+			handleClick(id){
+				console.log(id);
 				uni.navigateTo({
-					url: '../submitInfo/submitInfo'
+					url: `../submitInfo/submitInfo?id=${id}`
 				});
 			}
 		}
