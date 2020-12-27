@@ -1,6 +1,6 @@
 {
     "name" : "医院",
-    "appid" : "__UNI__35D03B9",
+    "appid" : "__UNI__EDC4803",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -55,54 +55,49 @@
     },
     /* 快应用特有相关 */
     "quickapp" : {},
-	"h5" : {
-	      "title" : "医院",
-	      "router" : {
-	          "mode" : "hash"
-	      },
-	      "devServer" : {
-	          "https" : false,
-	          "disableHostCheck" : true,
-	          "proxy" : {
-	              "/prod-api" : {
-	                 //"target" : "https://admin.shunlukeji.com",
-	                   "target": "http://syc320.320.io/",
-	                  "changeOrigin" : true,
-	                  "pathRewrite" : {
-	                      "^/prod-api" : "" //线上接口注释,线下接口取消注释
-	                  }
-	              }
-	          }
-	      },
-	      // "^/api" : ""
-	      "optimization" : {
-	          "treeShaking" : {
-	              "enable" : true
-	          }
-	      },
-	      "uniStatistics" : {
-	          "enable" : true
-	      },
-	      "sdkConfigs" : {
-	          "maps" : {
-	              "qqmap" : {
-	                  "key" : "JA4BZ-VQTWO-CZRWL-SCPQ2-7T2YK-WDBZ3"
-	              }
-	          }
-	      }
-	  },
+    "h5" : {
+        "title" : "医院",
+        "router" : {
+            "mode" : "hash"
+        },
+        "devServer" : {
+            "https" : false,
+            "disableHostCheck" : true,
+            "proxy" : {
+                "/prod-api" : {
+                    //"target" : "https://admin.shunlukeji.com",
+                    "target" : "http://syc320.320.io/",
+                    "changeOrigin" : true,
+                    "pathRewrite" : {
+                        "^/prod-api" : "" //线上接口注释,线下接口取消注释
+                    }
+                }
+            }
+        },
+        // "^/api" : ""
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        },
+        "uniStatistics" : {
+            "enable" : true
+        },
+        "sdkConfigs" : {
+            "maps" : {
+                "qqmap" : {
+                    "key" : "JA4BZ-VQTWO-CZRWL-SCPQ2-7T2YK-WDBZ3"
+                }
+            }
+        }
+    },
     /* 小程序特有相关 */
     "mp-weixin" : {
         "appid" : "",
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true,
-        "permission" : {
-            "scope.userLocation" : {
-                "desc" : ""
-            }
-        }
+        "usingComponents" : true
     },
     "mp-alipay" : {
         "usingComponents" : true
@@ -115,28 +110,5 @@
     },
     "uniStatistics" : {
         "enable" : false
-    },
-    "h5" : {
-        "uniStatistics" : {
-            "enable" : true
-        },
-        "router" : {
-            "mode" : "hash"
-        },
-        "devServer" : {
-            "https" : false
-        },
-        "optimization" : {
-            "treeShaking" : {
-                "enable" : true
-            }
-        },
-        "sdkConfigs" : {
-            "maps" : {
-                "qqmap" : {
-                    "key" : ""
-                }
-            }
-        }
     }
 }
