@@ -5,11 +5,14 @@ import {request} from './request.js'
 const indexApi = {
 	// 登陆接口
 
-	// 驾驶员端修改手机号
-	changMobile(params){
+	/**
+	 * 
+	 * @description api/wu/account/login 授权登录
+	*/
+	accountLogin(params){
 		return request({
-		  method: 'Post', 
-		  url: '/api/driver/changMobile',
+		  method: 'Postquery', 
+		  url: '/api/wu/account/login',
 		  params: params
 		})
 	},
