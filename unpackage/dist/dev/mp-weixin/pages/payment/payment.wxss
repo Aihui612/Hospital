@@ -1,0 +1,246 @@
+.content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background-color: #0066CC;
+}
+.content .back-grounp {
+  width: 702rpx;
+  height: 1100rpx;
+  background-size: 702rpx;
+  margin-top: 35rpx;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  margin-bottom: 71rpx;
+}
+.content .back-grounp .circle-state {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 114rpx;
+  margin-left: 64rpx;
+  margin-right: 58rpx;
+  margin-bottom: 36rpx;
+  width: 580rpx;
+  height: 90rpx;
+  background: #6DAEFE;
+  opacity: 0.9;
+  -webkit-border-radius: 45rpx;
+          border-radius: 45rpx;
+}
+.content .back-grounp .circle-state .pay-state {
+  width: 108rpx;
+  height: 34rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #0048FF;
+  margin-top: 28rpx;
+  margin-left: 234rpx;
+  margin-bottom: 28rpx;
+}
+.content .back-grounp .circle-state .slow-color {
+  margin-top: 27rpx;
+  margin-right: 0rpx;
+  margin-bottom: 28rpx;
+  width: 108px;
+  height: 35px;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 100;
+  color: #FF7C42;
+  line-height: 36px;
+}
+.content .back-grounp .list-name {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  width: 580rpx;
+  margin-left: 99rpx;
+  margin-right: 99rpx;
+}
+.content .back-grounp .list-name .item {
+  padding-bottom: 49rpx;
+  width: auto;
+  height: 28rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #575757;
+  line-height: 36rpx;
+}
+.content .back-grounp .list-name .attribute {
+  width: auto;
+  height: 30rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #575757;
+  line-height: 36rpx;
+  margin-right: 98rpx;
+}
+.content .back-grounp .cut-off1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 20rpx;
+  margin-left: 101rpx;
+  margin-right: 101rpx;
+  margin-bottom: 50rpx;
+  width: 500rpx;
+  height: 0rpx;
+  border: 1rpx solid #6DAEFE;
+}
+.content .back-grounp .list-cost {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  width: 580rpx;
+  margin-left: 99rpx;
+}
+.content .back-grounp .list-cost .item {
+  padding-bottom: 49rpx;
+  width: auto;
+  height: 28rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #575757;
+  line-height: 36rpx;
+}
+.content .back-grounp .list-cost .attribute {
+  width: auto;
+  height: 30rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #575757;
+  line-height: 36rpx;
+  margin-right: 98rpx;
+}
+.content .back-grounp .cut-off2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 10rpx;
+  margin-left: 101rpx;
+  margin-right: 101rpx;
+  margin-bottom: 43rpx;
+  width: 500rpx;
+  height: 0rpx;
+  border: 1rpx solid #6DAEFE;
+}
+.content .back-grounp .add-on {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+          justify-content: flex-end;
+  width: 580rpx;
+  margin-bottom: 34rpx;
+}
+.content .back-grounp .add-on .major-total {
+  width: 197rpx;
+  height: 34rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #ff0000;
+  line-height: 36rpx;
+  margin-left: 407rpx;
+}
+.content .back-grounp .button-container1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 580rpx;
+  height: 90rpx;
+  background: #0048FF;
+  -webkit-border-radius: 45rpx;
+          border-radius: 45rpx;
+  margin-left: 64rpx;
+  margin-bottom: 35rpx;
+}
+.content .back-grounp .button-container1 .button-pay {
+  width: 71rpx;
+  height: 34rpx;
+  font-size: 35rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 36rpx;
+  margin-top: 28rpx;
+  margin-bottom: 28rpx;
+  margin-left: 255rpx;
+  margin-right: 254rpx;
+}
+.content .back-grounp .button-container2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-left: 319rpx;
+  margin-bottom: 49rpx;
+}
+.content .back-grounp .button-container2 .button-cancel {
+  width: 70rpx;
+  height: 34rpx;
+  font-size: 35rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #575757;
+  line-height: 36rpx;
+}
+

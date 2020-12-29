@@ -1,0 +1,468 @@
+.content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding-left: 48rpx;
+  height: auto;
+  overflow: auto;
+}
+.content .inpatient-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 750rpx;
+  height: 800rpx;
+  background: #FFFFFF;
+  margin-bottom: 22rpx;
+}
+.content .inpatient-info .be-hospital {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.content .inpatient-info .be-hospital .icon-titicon {
+  width: 4rpx;
+  height: 34rpx;
+}
+.content .inpatient-info .be-hospital .infoMation-peo {
+  width: 211rpx;
+  height: 33rpx;
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #575757;
+  line-height: 36rpx;
+  margin-top: 58rpx;
+  margin-left: 24rpx;
+  margin-bottom: 55rpx;
+  margin-right: 464rpx;
+}
+.content .inpatient-info .list-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 750rpx;
+  height: 800rpx;
+}
+.content .inpatient-info .list-item .item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  width: 654rpx;
+  margin-right: 48rpx;
+}
+.content .inpatient-info .list-item .item .name-picture {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.content .inpatient-info .list-item .item .name-picture .name-text {
+  width: auto;
+  height: 28rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #575757;
+  line-height: 36rpx;
+  margin-bottom: 18rpx;
+}
+.content .inpatient-info .list-item .item .name-picture .icon-tip {
+  width: 15rpx;
+  height: 15rpx;
+  margin-left: 19rpx;
+  margin-top: 7rpx;
+  margin-bottom: 6rpx;
+}
+.content .inpatient-info .list-item .item .sdsd {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  margin-top: 18rpx;
+  margin-bottom: 40rpx;
+}
+.content .inpatient-info .list-item .item .sdsd .item-input2 {
+  width: 654rpx;
+  height: 76rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #EBEBEB;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+}
+.content .inpatient-info .list-item .item .sdsd .item-input2 .uni-list-cell-db {
+  margin-bottom: 69rpx;
+  margin-top: 18rpx;
+  width: 654rpx;
+  height: 76rpx;
+}
+.content .inpatient-info .list-item .item .item-input {
+  width: 654rpx;
+  height: 76rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #EBEBEB;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+  margin-top: 18rpx;
+  margin-bottom: 40rpx;
+}
+.content .inpatient-info .list-item .item .icon-tip {
+  width: 15rpx;
+  height: 15rpx;
+  margin-left: 19rpx;
+  margin-top: 7rpx;
+  margin-bottom: 6rpx;
+}
+.content .consignee-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 750rpx;
+  height: 800rpx;
+  background: #FFFFFF;
+  margin-bottom: 28rpx;
+  margin-top: 22rpx;
+}
+.content .consignee-info .Em-hospital {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.content .consignee-info .Em-hospital .icon-titicon {
+  width: 4rpx;
+  height: 34rpx;
+}
+.content .consignee-info .Em-hospital .infoMation-peo {
+  width: 211rpx;
+  height: 33rpx;
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #575757;
+  line-height: 36rpx;
+  margin-top: 58rpx;
+  margin-left: 24rpx;
+  margin-bottom: 55rpx;
+  margin-right: 464rpx;
+}
+.content .consignee-info .list-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 750rpx;
+  height: 800rpx;
+}
+.content .consignee-info .list-item .item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  width: 654rpx;
+  margin-right: 48rpx;
+}
+.content .consignee-info .list-item .item .name-picture {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.content .consignee-info .list-item .item .name-picture .name-text {
+  width: auto;
+  height: 28rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #575757;
+  line-height: 36rpx;
+  margin-bottom: 18rpx;
+}
+.content .consignee-info .list-item .item .name-picture .icon-tip {
+  width: 15rpx;
+  height: 15rpx;
+  margin-left: 20rpx;
+  margin-top: 7rpx;
+  margin-bottom: 6rpx;
+}
+.content .consignee-info .list-item .item .sdds {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  margin-top: 18rpx;
+  margin-bottom: 40rpx;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 {
+  width: 654rpx;
+  height: 76rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #EBEBEB;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 654rpx;
+  height: 76rpx;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi .header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  padding: 35rpx;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi .header .title {
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi .header .cancel-icon {
+  font-size: 34rpx;
+  color: #999999;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi .check {
+  padding-left: 17rpx;
+  color: #FF7E28;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi .select-box {
+  height: 1024rpx;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi .select-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding-left: 50rpx;
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid #F6F6F6;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi .select-list {
+  width: 120rpx;
+  height: 40rpx;
+  text-align: center;
+  overflow: hidden;
+  /*超出部分隐藏*/
+  text-overflow: ellipsis;
+  /* 超出部分显示省略号 */
+  white-space: nowrap;
+  /*规定段落中的文本不进行换行 */
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  margin-right: 30rpx;
+  border-bottom: 1rpx solid #FFFFFF;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi .select-list-cont {
+  padding-left: 67rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: 40rpx;
+}
+.content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi .selected {
+  border-bottom: 1rpx solid #F0AD4E;
+  color: #ff8500;
+}
+.content .consignee-info .list-item .item .item-input1 {
+  width: 654rpx;
+  height: 100rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #EBEBEB;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+}
+.content .consignee-info .list-item .item .item-input {
+  width: 654rpx;
+  height: 76rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #EBEBEB;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+  margin-top: 18rpx;
+  margin-bottom: 40rpx;
+}
+.content .button-container {
+  width: 750rpx;
+  height: 148rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-right: 48rpx;
+}
+.content .button-container .button-cancel {
+  width: 316rpx;
+  height: 90rpx;
+  background: #6DAEFE;
+  -webkit-border-radius: 45rpx;
+          border-radius: 45rpx;
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+.content .button-container .button-submit {
+  width: 316rpx;
+  height: 90rpx;
+  background: #0048FF;
+  border: 1rpx solid #EBEBEB;
+  -webkit-border-radius: 45rpx;
+          border-radius: 45rpx;
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+

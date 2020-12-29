@@ -35,7 +35,7 @@ const indexApi = {
     */
 	postApplySubInfo(params){
 		return request({
-		  method: 'Postquery', 
+		  method: 'Post', 
 		  url: '/api/wu/apply/applySub',
 		  params: params
 		})
@@ -51,6 +51,18 @@ const indexApi = {
 			method: 'Get',
 			url: '/api/wu/hospital/',
 			params: params
+		})
+	},
+	
+	/**
+	 * 
+	 * @description /api/wu/apply/{id} 获取打印申请详细信息
+	*/
+	getHospitalPay(params){
+		return request({
+			method:'Get',
+			url:'/api/wu/apply/{id}',
+			params:params
 		})
 	},
 }

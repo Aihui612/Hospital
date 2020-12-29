@@ -45,7 +45,7 @@ import config from '../../serves/config.js';
 		},
 		mounted(){
 	  if(!window.localStorage.getItem('openId')){ // 如果缓存localStorage中没有微信openId，则需用code去后台获取
-	              //this.getCode() 
+	                // this.getCode() 
 	        } else {
 	            // 别的业务逻辑
 			}
@@ -55,7 +55,7 @@ import config from '../../serves/config.js';
 			 * @description  账号登录
 			 * */
 			 handleAccountLogin(){
-				let params={code:'021R6bGa1ZI4fA0azCHa1AQWrO1R6bGm'}
+				let params={code:'041U3mFa128yeA0IgyHa14mBCx4U3mFq'}
 				indexApi.accountLogin(params)
 				.then(res=>{
 					console.log(res);
@@ -87,17 +87,16 @@ import config from '../../serves/config.js';
 						}
 						this.hospitalList=hospitalList;
 					}
-					
 				  })
 				  .catch(err=>{
-				  	console.log(err);
+				  	console.error(err);
 				  })
 			  },
 			
 			
 			// https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect
 			getCode () { // 非静默授权，第一次有弹框
-			                this.code = ''
+			                // this.code = ''
 			               // var local = window.location.href // 获取页面url
 						    var local ='http://linshi2.shunlukeji.com'
 			                var appid = 'wxa7c54270e26812ff' 

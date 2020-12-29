@@ -146,8 +146,6 @@
 	import uniPopup from '@/components/uni-popup/uni-popup.vue'
 	import indexApi from '../../serves/api.js';	
 	export default {
-	
-		
 		components: {
 					uniPopup
 				},
@@ -160,8 +158,6 @@
 		            title: 'picker',
 		            array: ['男', '女'],
 		            index: 0,
-		            //date: currentDate,
-		            // time: '12:01'
 					provinceData: cityDatas,
 					cityData: [],
 					areaData: [],
@@ -201,30 +197,32 @@
 			onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
 			        console.log(option.id); //打印出上个页面传递的参数。
 			        this.hospitalId=option.id;
+					console.log(this.hospitalId);
 			    },
 			watch: {
 			 
 					},
 			methods: {
-				
-				
 				submitClick(){
-					let sumbitInfo=this.sumbitInfo
+					let sumbitInfo=this.sumbitInfo;
 					sumbitInfo.hospitalId=this.hospitalId
-					let params=sumbitInfo;
-				
-						console.log(params);
 					
+					let params=sumbitInfo;
+						console.log(params);
 					indexApi.postApplySubInfo(params)
 					.then(res=>{
 						if(res&&res.code==200){
-							console.log(res)
+							console.log(res);
+							uni.showToast({
+								title: res.msg,
+								icon: "none",
+								duration: 2000
+							});
 						}
 					})
 					.catch(err=>{
 						console.error(err);
 					})
-					
 					
 					uni.navigateTo({
 					    url: '../payment/payment'
@@ -242,7 +240,6 @@
 			    },
 				getDate(type) {
 				   const date = new Date();
-				   
 				       },
 				togglePopup(type, open) {
 								this.type = type
@@ -463,11 +460,13 @@
 			height: 800rpx;
 			background: #FFFFFF;
 			margin-bottom: 28rpx;
+			margin-top: 22rpx;
 			.Em-hospital{
 						display: flex;
 						flex-direction: row;
 						justify-content: flex-start;
 						align-items: center;
+						
 					.icon-titicon{
 						width: 4rpx;
 						height: 34rpx;

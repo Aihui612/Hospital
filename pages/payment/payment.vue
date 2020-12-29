@@ -49,6 +49,7 @@
 </template>
 
 <script>
+	import indexApi from '../../serves/api.js';	
 	export default {
 		payClick(){
 			uni.navigateTo({
@@ -64,6 +65,40 @@
 			return {
 				imageURL: "/static/image_list.png"
 			};
+		},
+		// onLoad() {
+		// 	// 判断如果本地token 存在，则直接获取源列表； 
+		// 	if(uni.getStorageSync('Authorization')){
+				
+		// 		this.handleGetHospitalList()
+		// 	}else{
+		// 		//否则进行登录，暂时code写死，
+				
+		// 		this.handleAccountLogin()
+		// 	}
+		// },
+		methods: {
+			/**
+			 * 
+			 * @description  获取打印申请详细信息
+			 * */
+			ApplyID(){
+				// 挂载时执行调用接口请求
+				let params = patment;
+				console.log(params);
+				indexApi.getHospitalPay(params)
+				.then(res=>{
+					if(res&&res.code==200){
+						console.log(res);
+						// let token=res.token;
+						// uni.setStorageSync('Authorization',token)
+						// this.handleGetHospitalList()
+					}
+				})
+				.catch(err=>{
+					console.error(err);
+				})
+			}
 		}
 	}
 </script>
