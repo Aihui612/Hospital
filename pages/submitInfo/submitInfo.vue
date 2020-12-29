@@ -12,7 +12,7 @@
 						<view class="name-text">姓名</view>
 						<image src="../../static/icon_tip.png" class="icon-tip"></image>
 					</view>
-					<input class="item-input" name="input" placeholder="请输入姓名"  v-model="sumbitInfo.name"/>
+					<input class="item-input" name="name" placeholder="请输入姓名"  v-model="sumbitInfo.name"/>
 				</view>
 				<view class="item">
 					<view class="name-picture">
@@ -34,14 +34,14 @@
 						<view class="name-text">身份证号</view>
 						<image src="../../static/icon_tip.png" class="icon-tip"></image>
 					</view>
-					<input class="item-input" name="input" placeholder="请输入身份证号" v-model="sumbitInfo.cardNo"/>
+					<input class="item-input" name="cardNo" maxlength="18" @blur="checkCardNo(sumbitInfo.cardNo)" placeholder="请输入身份证号" v-model="sumbitInfo.cardNo"/>
 				</view>
 				<view class="item">
 					<view class="name-picture">
 						<view class="name-text">出院证号</view>
 						<image src="../../static/icon_tip.png" class="icon-tip"></image>
 					</view>
-					<input class="item-input" name="input" placeholder="请输入出院证号"  v-model="sumbitInfo.hospitalCardNo"/>
+					<input class="item-input" name="hospitalCardNo" placeholder="请输入出院证号"  v-model="sumbitInfo.hospitalCardNo"/>
 				</view>
 			</view>
 		</view>
@@ -58,14 +58,14 @@
 							<view class="name-text">收件人姓名</view>
 							<image src="../../static/icon_tip.png" class="icon-tip"></image>
 						</view>
-						<input class="item-input" name="input" placeholder="请输入收件人姓名" v-model="sumbitInfo.receiveName" />
+						<input class="item-input" name="receiveName" placeholder="请输入收件人姓名" maxlength="50" v-model="sumbitInfo.receiveName" />
 					</view>
 					<view class="item">
 						<view class="name-picture">
 							<view class="name-text">收件人联系电话</view>
 							<image src="../../static/icon_tip.png" class="icon-tip"></image>
 						</view>
-						<input class="item-input" name="input" placeholder="请输入收件人联系电话" v-model="sumbitInfo.receiveMobile"/>
+						<input class="item-input" name="receiveMobile" placeholder="请输入收件人联系电话"  @blur="checkMobilephone" v-model="sumbitInfo.receiveMobile"/>
 					</view>
 					<view  class="item">
 						<view class="name-picture">
@@ -130,7 +130,7 @@
 							<view class="name-text">详细地址</view>
 							<image src="../../static/icon_tip.png" class="icon-tip"></image>
 						</view>
-						<input class="item-input1" name="input" placeholder="请输入详细地址" v-model="sumbitInfo.addressDetails"/>
+						<input class="item-input1" name="addressDetails" placeholder="请输入详细地址" maxlength="50" v-model="sumbitInfo.addressDetails"/>
 					</view>
 					</view>
 		</view>
@@ -203,35 +203,156 @@
 			 
 					},
 			methods: {
+				
+				/**
+				 * 
+				 * @description  校验手机号码
+				 * **/
+				 checkMobilephone(phone){
+					 let reg=/^1[3-9]\d{9}$/;
+					 if(reg.test(phone)){
+						 return true;
+					 }else{
+						 uni.showToast({
+						 	title:'请输入正确的手机号码',
+						 	icon: "none",
+						 	duration: 2000
+						 });
+						 
+						 return false;
+					 }
+				 },
+				
+				 	/**
+				 	 * @description:大陆18位身份证校验规则；
+				 	 * @params:[idcode]:身份证号码
+				 	 *
+				 	 *
+				 	*/
+				 			
+				 checkCardNo (idcode){
+				 		    // 加权因子
+				 		    var weight_factor = [7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2];
+				 		    // 校验码
+				 		    var check_code = ['1', '0', 'X' , '9', '8', '7', '6', '5', '4', '3', '2'];
+				 		
+				 		    var code = idcode + "";
+				 		    var last = idcode[17];//最后一位
+				 		
+				 		    var seventeen = code.substring(0,17);
+				 		
+				 		    // ISO 7064:1983.MOD 11-2
+				 		    // 判断最后一位校验码是否正确
+				 		    var arr = seventeen.split("");
+				 		    var len = arr.length;
+				 		    var num = 0;
+				 		    for(var i = 0; i < len; i++){
+				 		        num = num + arr[i] * weight_factor[i];
+				 		    }
+				 		    
+				 		    // 获取余数
+				 		    var resisue = num%11;
+				 		    var last_no = check_code[resisue];
+				 		
+				 		    // 格式的正则
+				 		    // 正则思路
+				 		    /*
+				 		    第一位不可能是0
+				 		    第二位到第六位可以是0-9
+				 		    第七位到第十位是年份，所以七八位为19或者20
+				 		    十一位和十二位是月份，这两位是01-12之间的数值
+				 		    十三位和十四位是日期，是从01-31之间的数值
+				 		    十五，十六，十七都是数字0-9
+				 		    十八位可能是数字0-9，也可能是X
+				 		    */
+				 		    var idcard_patter = /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/;
+				 		
+				 		    // 判断格式是否正确
+				 		    var format = idcard_patter.test(idcode);
+				 		
+				 		    // 返回验证结果，校验码和格式同时正确才算是合法的身份证号码
+				 		   // return last === last_no && format ? true : false;
+				 			if(last === last_no && format){
+				 				
+				 				return true;
+				 			}else{
+				 				
+								uni.showToast({
+									title:'请输入正确的身份证号码',
+									icon: "none",
+									duration: 2000
+								});
+								return false;
+				 			}
+				 		},
+				/**
+				 * @description  必填信息校验是否为空；
+				 * */
+				hasEmpty(obj){
+					console.log(obj);
+					let result =Object.keys(obj).some(key=>{
+						return obj[key]==''|| obj[key]== undefined
+					})	
+					return result?result:false;
+				},
+				/**
+				 * @description  点击表单提交
+				 * */
 				submitClick(){
 					let sumbitInfo=this.sumbitInfo;
 					sumbitInfo.hospitalId=this.hospitalId
+					// 必填项校验是否完善
+					let checkResult=this.hasEmpty(sumbitInfo);
+					console.log(checkResult);
+					if(checkResult){ // 必填项存在为空
+						uni.showToast({
+							title:'请完善必填信息',
+							icon: "none",
+							duration: 2000
+						});
+						return false;
+					}
+					//提交时校验身份证
+					let checkNo=this.checkCardNo(sumbitInfo.cardNo)
+					if(!checkNo){
+						uni.showToast({
+							title:'请输入正确的身份证号',
+							icon: "none",
+							duration: 2000
+						});
+						return false;
+					}
+					
+					//提交时校验手机号
+					let checkPhone=this.checkMobilephone(sumbitInfo.receiveMobile)
+					if(!checkPhone){
+						uni.showToast({
+							title:'请输入正确的手机号',
+							icon: "none",
+							duration: 2000
+						});
+						return false;
+					}
 					
 					let params=sumbitInfo;
-						console.log(params);
 					indexApi.postApplySubInfo(params)
 					.then(res=>{
 						if(res&&res.code==200){
-							console.log(res);
 							uni.showToast({
 								title: res.msg,
 								icon: "none",
 								duration: 2000
 							});
+							// 提交成功以后返回到医院列表页
+							uni.navigateBack()
 						}
 					})
 					.catch(err=>{
 						console.error(err);
 					})
-					
-					uni.navigateTo({
-					    url: '../payment/payment'
-					})
 				},
 				cancelClick(){
-					uni.navigateTo({
-					    url: '../index/index'
-					})
+					uni.navigateBack()
 				},
 				
 			    bindPickerChange: function(e) {

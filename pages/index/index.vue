@@ -55,7 +55,7 @@ import config from '../../serves/config.js';
 			 * @description  账号登录
 			 * */
 			 handleAccountLogin(){
-				let params={code:'041U3mFa128yeA0IgyHa14mBCx4U3mFq'}
+				let params={code:'001vrqFa1ChYeA0HYbHa1Ul9V53vrqFO'}
 				indexApi.accountLogin(params)
 				.then(res=>{
 					console.log(res);
