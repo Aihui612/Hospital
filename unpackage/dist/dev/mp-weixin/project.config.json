@@ -4,12 +4,13 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false
+    "urlCheck": false,
+    "es6": true
   },
   "compileType": "miniprogram",
   "libVersion": "",
-  "appid": "touristappid",
-  "projectname": "医院",
+  "appid": "wxf8ebea952e73aaa8",
+  "projectname": "hospital",
   "condition": {
     "search": {
       "current": -1,
@@ -24,19 +25,13 @@
       "list": []
     },
     "miniprogram": {
-      "current": 1,
+      "current": 0,
       "list": [
         {
           "name": "",
           "path": "",
           "query": "",
           "id": 0
-        },
-        {
-          "id": 1,
-          "name": "pages/submitInfo/submitInfo",
-          "pathName": "pages/submitInfo/submitInfo",
-          "query": ""
         }
       ]
     }

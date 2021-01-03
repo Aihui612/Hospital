@@ -7,12 +7,12 @@ const indexApi = {
 
 	/**
 	 * 
-	 * @description api/wu/account/login 授权登录
+	 * @description api/wu/account/login/code 小程序授权登录
 	*/
 	accountLogin(params){
 		return request({
 		  method: 'Postquery', 
-		  url: '/api/wu/account/login',
+		  url: '/api/wu/account/login/code',
 		  params: params
 		})
 	},

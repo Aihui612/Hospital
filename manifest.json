@@ -1,5 +1,5 @@
 {
-    "name" : "医院",
+    "name" : "hospital",
     "appid" : "__UNI__EDC4803",
     "description" : "",
     "versionName" : "1.0.0",
@@ -93,9 +93,10 @@
     },
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxf8ebea952e73aaa8",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "es6" : true
         },
         "usingComponents" : true
     },
@@ -112,3 +113,5 @@
         "enable" : false
     }
 }
+/* 小程序特有相关 */
+
