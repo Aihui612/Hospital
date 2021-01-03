@@ -32,42 +32,49 @@ import config from '../../serves/config.js';
 				hospitalList:[]
 			}
 		},
-		onLoad() {
-			// 判断如果本地token 存在，则直接获取源列表； 
+		mounted(){
+			
+			// 判断如果本地token 存在，则直接获取源列表；
 			if(uni.getStorageSync('Authorization')){
 				
 				this.handleGetHospitalList()
+				
 			}else{
 				//否则进行登录，暂时code写死，
 				
 				this.handleAccountLogin()
 			}
-		},
-		mounted(){
-	  if(!window.localStorage.getItem('openId')){ // 如果缓存localStorage中没有微信openId，则需用code去后台获取
-	                // this.getCode() 
-	        } else {
-	            // 别的业务逻辑
-			}
+	
 		},
 		methods: {
 			/**
 			 * @description  账号登录
 			 * */
 			 handleAccountLogin(){
-				let params={code:'001vrqFa1ChYeA0HYbHa1Ul9V53vrqFO'}
-				indexApi.accountLogin(params)
-				.then(res=>{
-					console.log(res);
-					if(res&&res.code==200){
-						let token=res.token;
-						uni.setStorageSync('Authorization',token)
-						this.handleGetHospitalList()
-					}
-				})
-				.catch(err=>{
-					console.error(err);
-				})
+				 let _this=this;
+				 uni.login({
+				 	provider: 'weixin',
+				 	success: function(loginRes) {
+				 		console.log(loginRes);
+						let params={
+							code:loginRes.code
+						}
+						console.log(indexApi);
+						indexApi.accountLogin(params)
+						.then(res=>{
+							console.log(res);
+							if(res&&res.code==200){
+								let token=res.token;
+								uni.setStorageSync('Authorization',token)
+								_this.handleGetHospitalList()
+							}
+						})
+						.catch(err=>{
+							console.error(err);
+						})
+				 	}
+				 });
+			
 				 
 			 },
 			 

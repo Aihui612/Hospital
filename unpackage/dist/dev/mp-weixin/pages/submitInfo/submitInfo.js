@@ -278,9 +278,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _cityArea = _interopRequireDefault(__webpack_require__(/*! ../../components/mpvue-citypicker/city-data/city.area.js */ 28));
 
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
 //
 //
 //
@@ -428,12 +432,12 @@ var uniPopup = function uniPopup() {__webpack_require__.e(/*! require.ensure | c
     this.hospitalId = option.id;console.log(this.hospitalId);}, watch: {}, methods: { /**
                                                                                        * 
                                                                                        * @description  校验手机号码
-                                                                                       * **/checkMobilephone: function checkMobilephone(phone) {var reg = /^1[3-9]\d{9}$/;if (reg.test(phone)) {return true;} else {uni.showToast({ title: '请输入正确的手机号码', icon: "none", duration: 2000 });return false;}}, /**
-                                                                                                                                                                                                                                                                                                           * @description:大陆18位身份证校验规则；
-                                                                                                                                                                                                                                                                                                           * @params:[idcode]:身份证号码
-                                                                                                                                                                                                                                                                                                           *
-                                                                                                                                                                                                                                                                                                           *
-                                                                                                                                                                                                                                                                                                          */checkCardNo: function checkCardNo(idcode) {// 加权因子
+                                                                                       * **/checkMobilephone: function checkMobilephone(phone) {var reg = /^1[0-9]{10}$/;console.log(reg.test(phone), phone);if (reg.test(phone)) {return true;} else {uni.showToast({ title: '请输入正确的手机号码', icon: "none", duration: 2000 });return false;}}, /**
+                                                                                                                                                                                                                                                                                                                                              * @description:大陆18位身份证校验规则；
+                                                                                                                                                                                                                                                                                                                                              * @params:[idcode]:身份证号码
+                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                             */checkCardNo: function checkCardNo(idcode) {// 加权因子
       var weight_factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]; // 校验码
       var check_code = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];var code = idcode + "";var last = idcode[17]; //最后一位
       var seventeen = code.substring(0, 17); // ISO 7064:1983.MOD 11-2
@@ -454,9 +458,9 @@ var uniPopup = function uniPopup() {__webpack_require__.e(/*! require.ensure | c
       // return last === last_no && format ? true : false;
       if (last === last_no && format) {return true;} else {uni.showToast({ title: '请输入正确的身份证号码', icon: "none", duration: 2000 });return false;}}, /**
                                                                                                                                                    * @description  必填信息校验是否为空；
-                                                                                                                                                   * */hasEmpty: function hasEmpty(obj) {console.log(obj);var result = Object.keys(obj).some(function (key) {return obj[key] == '' || obj[key] == undefined;});return result ? result : false;}, /**
-                                                                                                                                                                                                                                                                                                                                                  * @description  点击表单提交
-                                                                                                                                                                                                                                                                                                                                                  * */submitClick: function submitClick() {var sumbitInfo = this.sumbitInfo;sumbitInfo.hospitalId = this.hospitalId; // 必填项校验是否完善
+                                                                                                                                                   * */hasEmpty: function hasEmpty(obj) {console.log(obj);var result = Object.keys(obj).some(function (key) {console.log(obj[key], obj[key] == '' || obj[key] == undefined);return obj[key] == null || obj[key] == undefined;});return result ? result : false;}, /**
+                                                                                                                                                                                                                                                                                                                                                                                                                   * @description  点击表单提交
+                                                                                                                                                                                                                                                                                                                                                                                                                   * */submitClick: function submitClick() {var sumbitInfo = this.sumbitInfo;sumbitInfo.hospitalId = this.hospitalId; // 必填项校验是否完善
       var checkResult = this.hasEmpty(sumbitInfo);console.log(checkResult);if (checkResult) {// 必填项存在为空
         uni.showToast({ title: '请完善必填信息', icon: "none", duration: 2000 });return false;} //提交时校验身份证
       var checkNo = this.checkCardNo(sumbitInfo.cardNo);if (!checkNo) {uni.showToast({ title: '请输入正确的身份证号', icon: "none", duration: 2000 });return false;} //提交时校验手机号

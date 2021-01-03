@@ -2,20 +2,20 @@
 import indexApi from './serves/request.js';
 export default {
 	onLaunch: function() {
-		let _this = this;
-		console.log('App Launch');
-		// #ifdef MP-WEIXIN
-		if (!uni.getStorageSync('Authorization')) {
-			// uni.login 获取code
-			uni.login({
-				provider: 'weixin',
-				success: function(loginRes) {
-					console.log(loginRes);
-					_this.getcode(loginRes.code);
-				}
-			});
-		}
-		// #endif
+		// let _this = this;
+		// console.log('App Launch');
+		// // #ifdef MP-WEIXIN
+		// if (!uni.getStorageSync('Authorization')) {
+		// 	// uni.login 获取code
+		// 	uni.login({
+		// 		provider: 'weixin',
+		// 		success: function(loginRes) {
+		// 			console.log(loginRes);
+		// 			_this.getcode(loginRes.code);
+		// 		}
+		// 	});
+		// }
+		// // #endif
 	},
 	onShow: function() {
 		console.log('App Show');
@@ -28,9 +28,13 @@ export default {
 			let params={
 				code:e
 			}
+			console.log(indexApi);
 			indexApi.accountLogin(params)
 			.then(res=>{
 				if(res&&res.code==200){
+					let token=res.token;
+					uni.setStorageSync('Authorization',token)
+					
 					uni.navigateTo({  
 							 url: '/pages/index/index',
 						});

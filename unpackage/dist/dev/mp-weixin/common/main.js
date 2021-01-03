@@ -92,20 +92,20 @@ __webpack_require__.r(__webpack_exports__);
 var _request = _interopRequireDefault(__webpack_require__(/*! ./serves/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   onLaunch: function onLaunch() {
-    var _this = this;
-    console.log('App Launch');
-
-    if (!uni.getStorageSync('Authorization')) {
-      // uni.login 获取code
-      uni.login({
-        provider: 'weixin',
-        success: function success(loginRes) {
-          console.log(loginRes);
-          _this.getcode(loginRes.code);
-        } });
-
-    }
-
+    // let _this = this;
+    // console.log('App Launch');
+    //
+    // if (!uni.getStorageSync('Authorization')) {
+    // 	// uni.login 获取code
+    // 	uni.login({
+    // 		provider: 'weixin',
+    // 		success: function(loginRes) {
+    // 			console.log(loginRes);
+    // 			_this.getcode(loginRes.code);
+    // 		}
+    // 	});
+    // }
+    //
   },
   onShow: function onShow() {
     console.log('App Show');
@@ -118,9 +118,13 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ./serves/request.j
       var params = {
         code: e };
 
+      console.log(_request.default);
       _request.default.accountLogin(params).
       then(function (res) {
         if (res && res.code == 200) {
+          var token = res.token;
+          uni.setStorageSync('Authorization', token);
+
           uni.navigateTo({
             url: '/pages/index/index' });
 

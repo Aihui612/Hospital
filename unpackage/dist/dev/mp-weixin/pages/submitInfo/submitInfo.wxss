@@ -12,7 +12,6 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  padding-left: 48rpx;
   height: auto;
   overflow: auto;
 }
@@ -30,10 +29,11 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  width: 750rpx;
+  width: 702rpx;
   height: 800rpx;
   background: #FFFFFF;
   margin-bottom: 22rpx;
+  padding: 0rpx 24rpx;
 }
 .content .inpatient-info .be-hospital {
   display: -webkit-box;
@@ -157,6 +157,7 @@
   border: 1rpx solid #EBEBEB;
   -webkit-border-radius: 10rpx;
           border-radius: 10rpx;
+  text-indent: 4rpx;
 }
 .content .inpatient-info .list-item .item .sdsd .item-input2 .uni-list-cell-db {
   margin-bottom: 69rpx;
@@ -173,6 +174,7 @@
           border-radius: 10rpx;
   margin-top: 18rpx;
   margin-bottom: 40rpx;
+  text-indent: 25rpx;
 }
 .content .inpatient-info .list-item .item .icon-tip {
   width: 15rpx;
@@ -195,11 +197,12 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  width: 750rpx;
+  width: 702rpx;
   height: 800rpx;
   background: #FFFFFF;
   margin-bottom: 28rpx;
   margin-top: 22rpx;
+  padding: 0rpx 24rpx;
 }
 .content .consignee-info .Em-hospital {
   display: -webkit-box;
@@ -323,6 +326,7 @@
   border: 1rpx solid #EBEBEB;
   -webkit-border-radius: 10rpx;
           border-radius: 10rpx;
+  text-indent: 25rpx;
 }
 .content .consignee-info .list-item .item .sdds .item-input3 .XuanZeQi {
   display: -webkit-box;
@@ -413,6 +417,7 @@
   border: 1rpx solid #EBEBEB;
   -webkit-border-radius: 10rpx;
           border-radius: 10rpx;
+  text-indent: 25rpx;
 }
 .content .consignee-info .list-item .item .item-input {
   width: 654rpx;
@@ -423,6 +428,7 @@
           border-radius: 10rpx;
   margin-top: 18rpx;
   margin-bottom: 40rpx;
+  text-indent: 25rpx;
 }
 .content .button-container {
   width: 750rpx;
@@ -440,7 +446,6 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  margin-right: 48rpx;
 }
 .content .button-container .button-cancel {
   width: 316rpx;

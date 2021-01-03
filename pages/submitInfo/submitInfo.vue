@@ -20,13 +20,15 @@
 						<image src="../../static/icon_tip.png" class="icon-tip"></image>
 					</view>
 					<view class="sdsd">
-						<text class="item-input2">
+						<view class="item-input2">
 							<view class="uni-list-cell-db">
-							    <picker @change="bindPickerChange" :value="sumbitInfo.sex" :range="array">
+							    <picker  mode="selector"  @change="bindPickerChange"  style='padding-left: 25rpx;' :value="sumbitInfo.sex" :range="array">
 							    <view class="uni-input">{{array[index]}}</view>
 							    </picker>
+								<uni-icons type="arrowright"></uni-icons>
 							</view>
-						</text>
+						
+						</view>
 					</view>
 				</view>
 				<view  class="item">
@@ -65,7 +67,7 @@
 							<view class="name-text">收件人联系电话</view>
 							<image src="../../static/icon_tip.png" class="icon-tip"></image>
 						</view>
-						<input class="item-input" name="receiveMobile" placeholder="请输入收件人联系电话"  @blur="checkMobilephone" v-model="sumbitInfo.receiveMobile"/>
+						<input class="item-input" name="receiveMobile" placeholder="请输入收件人联系电话"  maxlength="11" @blur="checkMobilephone(sumbitInfo.receiveMobile)" v-model="sumbitInfo.receiveMobile"/>
 					</view>
 					<view  class="item">
 						<view class="name-picture">
@@ -73,9 +75,9 @@
 							<image src="../../static/icon_tip.png" class="icon-tip"></image>
 						</view>
 						<view class="sdds">
-							<text class="item-input3">
+							<view class="item-input3">
 								<view class="XuanZeQi">
-									<view @tap="togglePopup('bottom','popup')" style="padding: 40upx;display: flex;align-items: center;">
+									<view @tap="togglePopup('bottom','popup')" style="display: flex;align-items: center;">
 												<view v-for="(item, index) in selectList" :key="index">
 													{{item.txt}}<span v-show="index == 0 || index == 1">—</span>
 												</view>
@@ -122,7 +124,7 @@
 											</uni-popup>
 								</view>
 								
-							</text>
+							</view>
 						</view>
 					</view>
 					<view class="item">
@@ -209,7 +211,8 @@
 				 * @description  校验手机号码
 				 * **/
 				 checkMobilephone(phone){
-					 let reg=/^1[3-9]\d{9}$/;
+					 let reg=/^1[0-9]{10}$/;
+					 console.log(reg.test(phone),phone);
 					 if(reg.test(phone)){
 						 return true;
 					 }else{
@@ -291,7 +294,8 @@
 				hasEmpty(obj){
 					console.log(obj);
 					let result =Object.keys(obj).some(key=>{
-						return obj[key]==''|| obj[key]== undefined
+						console.log(obj[key],obj[key]==''|| obj[key]== undefined);
+						return obj[key]==null || obj[key]== undefined
 					})	
 					return result?result:false;
 				},
@@ -448,7 +452,6 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
-		padding-left: 48rpx;
 		height: auto;
 		overflow: auto;
 		.inpatient-info{
@@ -456,10 +459,11 @@
 			flex-direction: column;
 			justify-content: flex-start;
 			align-items: center;
-			width: 750rpx;
+			width: 702rpx;
 			height: 800rpx;
 			background: #FFFFFF;
 			margin-bottom: 22rpx;
+			padding: 0rpx 24rpx;
 			
 			.be-hospital{
 				display: flex;
@@ -540,6 +544,7 @@
 							background: #FFFFFF;
 							border: 1rpx solid #EBEBEB;
 							border-radius: 10rpx;
+							text-indent: 4rpx;
 
 							.uni-list-cell-db{
 										margin-bottom: 69rpx;
@@ -558,6 +563,7 @@
 						border-radius: 10rpx;
 						margin-top: 18rpx;
 						margin-bottom: 40rpx;
+						text-indent: 25rpx;
 
 					}	
 		     		.icon-tip{
@@ -577,11 +583,12 @@
 			flex-direction: column;
 			justify-content: flex-start;
 			align-items: center;
-			width: 750rpx;
+			width: 702rpx;
 			height: 800rpx;
 			background: #FFFFFF;
 			margin-bottom: 28rpx;
 			margin-top: 22rpx;
+			padding: 0rpx 24rpx;
 			.Em-hospital{
 						display: flex;
 						flex-direction: row;
@@ -656,6 +663,7 @@
 								background: #FFFFFF;
 								border: 1rpx solid #EBEBEB;
 								border-radius: 10rpx;
+								text-indent: 25rpx;
 	
 								.XuanZeQi{
 									display: flex;
@@ -736,6 +744,7 @@
 							background: #FFFFFF;
 							border: 1rpx solid #EBEBEB;
 							border-radius: 10rpx;
+							text-indent: 25rpx;
 						}
 						.item-input{
 							width: 654rpx;
@@ -745,6 +754,7 @@
 							border-radius: 10rpx;
 							margin-top: 18rpx;
 							margin-bottom: 40rpx;
+							text-indent: 25rpx;
 					      }			
 			        }			     	
 			    }
@@ -756,7 +766,6 @@
 			flex-direction: row;
 			justify-content: space-between;
 			align-items: center;
-			margin-right: 48rpx;
 			.button-cancel{
 				width: 316rpx;
 				height: 90rpx;
