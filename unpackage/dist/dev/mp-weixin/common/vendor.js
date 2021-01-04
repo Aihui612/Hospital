@@ -8069,6 +8069,19 @@ var indexApi = {
       params: params });
 
   },
+
+  /**
+      * 
+      * @description  /api/wu/apply/getlist 获取打印申请列表
+      * */
+  getApplylist: function getApplylist(params) {
+    return (0, _request.request)({
+      method: 'Get',
+      url: '/api/wu/apply/getlist',
+      params: params });
+
+  },
+
   /**
       * 
       * @description '/api/wu/apply/applySub', 打印申请提交
@@ -8101,8 +8114,8 @@ var indexApi = {
   getHospitalPay: function getHospitalPay(params) {
     return (0, _request.request)({
       method: 'Get',
-      url: '/api/wu/apply/{id}',
-      params: params });
+      url: "/api/wu/apply/".concat(params.id) });
+
 
   } };var _default =
 
@@ -8299,15 +8312,15 @@ function erry(e) {
 
 
 
-  /* var Authorization = uni.getStorageSync('Authorization');
-                     if(e.data!=''&&e.data.msg!=''||Authorization==''){
-                     
-                     if(e.data.msg.indexOf('认证失败')!=-1){
-                     	uni.removeStorageSync('Authorization');
-                     	uni.navigateTo({
-                     	    url: '/pages/index/login'
-                     	});
-                     } } */
+  var Authorization = uni.getStorageSync('Authorization');
+  if (e.data != '' && e.data.msg != '' || Authorization == '') {
+
+    if (e.data.msg.indexOf('请先登录后才能操作') != -1) {
+      uni.removeStorageSync('Authorization');
+      uni.navigateTo({
+        url: '/pages/index/index' });
+
+    }}
 }
 // 请求拦截(请求发出前处理请求)
 // axios.interceptors.request.use(

@@ -157,6 +157,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */ 17));
 var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var _default =
 
@@ -220,6 +224,7 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config
         * @description  获取医院列表
         * */
     handleGetHospitalList: function handleGetHospitalList() {var _this2 = this;
+      var _this = this;
       // 挂载时执行调用接口请求
       _api.default.getHospitalList().
       then(function (res) {
@@ -230,6 +235,9 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config
               item.logoImg = _config.default.loadUrl + item.logoImg;
             }} catch (err) {_iterator.e(err);} finally {_iterator.f();}
           _this2.hospitalList = hospitalList;
+        } else {
+          uni.removeStorageSync('Authorization');
+          _this.handleAccountLogin();
         }
       }).
       catch(function (err) {
@@ -270,6 +278,32 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config
       console.log(id);
       uni.navigateTo({
         url: "../submitInfo/submitInfo?id=".concat(id) });
+
+    },
+    submsg: function submsg() {
+      wx.requestSubscribeMessage({
+        tmplIds: ['QKEerV3BKmZIgI0gUnj8ycMS4O99Oa_rvFqNp9QZxg8', 'ct2AMvcibFdujj612Gzvorg-U4KKdcvjiKHTktcaUsk', '3EnKZ92phO4pHIvIzn-3s71KhJxUoMWgiTdLyqvtrw4'],
+        success: function success(res) {
+          console.log(res);
+          var errMsg = res.errMsg;
+          console.log(errMsg);
+          console.log(errMsg == 'requestSubscribeMessage:ok');
+
+          if (errMsg == 'requestSubscribeMessage:ok') {
+            //用户同意了订阅，允许订阅消息
+            wx.showToast({
+              title: '订阅成功' });
+
+          } else {
+            //用户拒绝了订阅，禁用订阅消息
+            wx.showToast({
+              title: '订阅失败' });
+
+          }
+        },
+        fail: function fail(err) {
+          console.error(err);
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

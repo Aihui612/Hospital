@@ -181,6 +181,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -231,23 +232,43 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */
 //
 //
 //
-var _default = { payClick: function payClick() {uni.navigateTo({ url: '../index/index' });}, cancelpayClick: function cancelpayClick() {uni.navigateTo({ url: '../submitInfo/submitInfo' });}, data: function data() {return { imageURL: "/static/image_list.png" };}, // onLoad() {
-  // 	// 判断如果本地token 存在，则直接获取源列表； 
-  // 	if(uni.getStorageSync('Authorization')){
-  // 		this.handleGetHospitalList()
-  // 	}else{
-  // 		//否则进行登录，暂时code写死，
-  // 		this.handleAccountLogin()
-  // 	}
-  // },
-  methods: { /**
-              * 
-              * @description  获取打印申请详细信息
-              * */ApplyID: function ApplyID() {// 挂载时执行调用接口请求
-      var params = patment;console.log(params);_api.default.getHospitalPay(params).then(function (res) {if (res && res.code == 200) {console.log(res); // let token=res.token;
-          // uni.setStorageSync('Authorization',token)
-          // this.handleGetHospitalList()
-        }}).catch(function (err) {console.error(err);});} } };exports.default = _default;
+//
+var _default = { data: function data() {return { imageURL: "/static/image_list.png", queryform: { pageNum: 1, pageSize: 10 }, payInfo: { addressDetails: "", cardNo: "", city: "", county: "", expressNo: null, freight: null, hospitalCardNo: "", hospitalId: null, id: null, name: "", printAmount: null, printNum: null, province: "", receiveMobile: "", receiveName: "", sex: 0, status: 1, totalAmount: null, userId: 4 } };}, mounted: function mounted() {this.getApplyList();this.getHospitalPayInfo();}, methods: { /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description  获取医院详情
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * */getHospitalPayInfo: function getHospitalPayInfo() {// 挂载时执行调用接口请求  /暂时写死
+      var _this = this;var parmas = { id: 8 };_api.default.getHospitalPay(parmas).then(function (res) {if (res && res.code == 200) {console.log(res);_this.payInfo = res.data;}}).
+      catch(function (err) {
+        console.error(err);
+      });
+    },
+    /**
+        * 
+        * @description  获取打印申请详细信息
+        * */
+    getApplyList: function getApplyList() {
+      // 挂载时执行调用接口请求
+      var parmas = this.queryform;
+      _api.default.getApplylist(parmas).
+      then(function (res) {
+        if (res && res.code == 200) {
+          console.log(res);
+
+        }
+      }).
+      catch(function (err) {
+        console.error(err);
+      });
+    },
+    payClick: function payClick() {
+      uni.navigateTo({
+        url: '../index/index' });
+
+    },
+    cancelpayClick: function cancelpayClick() {
+      uni.navigateTo({
+        url: '../submitInfo/submitInfo' });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

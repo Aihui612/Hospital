@@ -177,16 +177,16 @@ function erry(e){
 		icon: "none",
 
 	}); 
-
-	/* var Authorization = uni.getStorageSync('Authorization');
+	
+	var Authorization = uni.getStorageSync('Authorization');
 	if(e.data!=''&&e.data.msg!=''||Authorization==''){
 	
-	if(e.data.msg.indexOf('认证失败')!=-1){
+	if(e.data.msg.indexOf('请先登录后才能操作')!=-1){
 		uni.removeStorageSync('Authorization');
 		uni.navigateTo({
-		    url: '/pages/index/login'
+		    url: '/pages/index/index'
 		});
-	} } */
+	} } 
 }
 // 请求拦截(请求发出前处理请求)
 // axios.interceptors.request.use(

@@ -100,4 +100,26 @@
   width: 16rpx;
   height: 28rpx;
 }
+.content .subscribe {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  margin-top: 20rpx;
+  border-top: 1px solid #FFF;
+  padding-top: 20rpx;
+}
+.content .subscribe .btn {
+  width: 154rpx;
+  height: 79rpx;
+  vertical-align: middle;
+  line-height: 84rpx;
+  margin: 0rpx;
+}
 

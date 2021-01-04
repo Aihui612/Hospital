@@ -15,6 +15,10 @@
 				</template>
 
 	  </view>
+	  <view class="subscribe">
+	  			<text style="font-size: 32rpx;">订阅消息</text>
+	  			<button class="btn" @click="submsg">开启</button>
+	  		</view>
 		
 	</view>
 </template>
@@ -83,6 +87,7 @@ import config from '../../serves/config.js';
 			  * @description  获取医院列表
 			  * */
 			  handleGetHospitalList(){
+				  let _this=this;
 				  // 挂载时执行调用接口请求
 				  indexApi.getHospitalList()
 				  .then(res=>{
@@ -93,6 +98,9 @@ import config from '../../serves/config.js';
 							item.logoImg = config.loadUrl+item.logoImg
 						}
 						this.hospitalList=hospitalList;
+					}else{
+						 uni.removeStorageSync('Authorization');
+						 _this.handleAccountLogin();
 					}
 				  })
 				  .catch(err=>{
@@ -134,7 +142,33 @@ import config from '../../serves/config.js';
 				uni.navigateTo({
 					url: `../submitInfo/submitInfo?id=${id}`
 				});
-			}
+			},
+					submsg() {
+						  wx.requestSubscribeMessage({
+						    tmplIds: ['QKEerV3BKmZIgI0gUnj8ycMS4O99Oa_rvFqNp9QZxg8','ct2AMvcibFdujj612Gzvorg-U4KKdcvjiKHTktcaUsk','3EnKZ92phO4pHIvIzn-3s71KhJxUoMWgiTdLyqvtrw4'],
+						    success(res) {
+								console.log(res);
+								let errMsg=res.errMsg;
+								console.log(errMsg);
+									console.log(errMsg == 'requestSubscribeMessage:ok');
+										  
+						      if (errMsg == 'requestSubscribeMessage:ok') {
+						        //用户同意了订阅，允许订阅消息
+						        wx.showToast({
+						          title: '订阅成功'
+						        })
+						      } else {
+						        //用户拒绝了订阅，禁用订阅消息
+						        wx.showToast({
+						          title: '订阅失败'
+						        })
+						      }
+						    },
+						    fail(err) {
+						      console.error(err)
+						    }
+						  })
+						},
 		}
 	}
 </script>
@@ -209,6 +243,22 @@ import config from '../../serves/config.js';
 				 
 			 }
 		}
+		
+			.subscribe{
+				    display: flex;
+				    flex-direction: row;
+				    justify-content: space-between;
+				    margin-top: 20rpx;
+				    border-top: 1px solid #FFF;
+				    padding-top: 20rpx;
+					.btn{
+						    width: 154rpx;
+						    height: 79rpx;
+						    vertical-align: middle;
+						    line-height: 84rpx;
+						    margin: 0rpx;
+					}
+			}
  
 	}
 

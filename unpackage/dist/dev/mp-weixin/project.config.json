@@ -43,22 +43,21 @@
   "appid": "wxf8ebea952e73aaa8",
   "projectname": "hospital",
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
+    "plugin": {
       "list": []
     },
     "game": {
       "list": []
     },
+    "gamePlugin": {
+      "list": []
+    },
     "miniprogram": {
       "list": [
         {
-          "name": "",
-          "path": "",
-          "query": "",
-          "id": 0
+          "name": "pages/payment/payment",
+          "pathName": "pages/payment/payment",
+          "scene": null
         }
       ]
     }

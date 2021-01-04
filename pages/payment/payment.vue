@@ -7,33 +7,34 @@
 			</view>	
 			<view class="list-name">
 				<view class="item">姓名</view>
-				<view class="attribute">顾耀东</view>
+				<view class="attribute">{{payInfo.name}}</view>
 			</view>
 			<view class="list-name">
 				<view class="item">性别</view>
-				<view class="attribute">男</view>
+				<view  v-if="payInfo.sex==0" class="attribute">男</view>
+				<view  v-if="payInfo.sex==1" class="attribute">女</view>
 			</view>
 		    <view class="list-name">
 				<view class="item">住院号</view>
-				<view class="attribute">SJ00232020120521180</view>
+				<view class="attribute">{{payInfo.hospitalCardNo}}</view>
 			</view>
 			<view class="cut-off1"></view>
 			<view class="list-cost">
 				<view class="item">打印数量</view>
-				<view class="attribute">1</view>
+				<view class="attribute">{{payInfo.printNum}}</view>
 			</view>
 			<view class="list-name">
 				<view class="item">打印费用</view>
-				<view class="attribute">43.3元</view>
+				<view class="attribute">{{payInfo.printAmount}}</view>
 			</view>
 			<view class="list-name">
 				<view class="item">邮寄费用</view>
-				<view class="attribute">12元</view>
+				<view class="attribute">{{payInfo.expressNo}}元</view>
 			</view>
 			<view class="cut-off2"></view>
 			<view class="add-on">
 				<view class="major-total">
-					合计:55.3元
+					合计:{{payInfo.totalAmount}}元
 				</view>
 			</view>
 			<view class="button-container1" @click="payClick">
@@ -51,54 +52,91 @@
 <script>
 	import indexApi from '../../serves/api.js';	
 	export default {
-		payClick(){
-			uni.navigateTo({
-				url: '../index/index'
-			});
-		},
-		cancelpayClick(){
-			uni.navigateTo({
-				url: '../submitInfo/submitInfo'
-			});
-		},
+	
 		data() {
 			return {
-				imageURL: "/static/image_list.png"
+				imageURL: "/static/image_list.png",
+				queryform: {
+								pageNum: 1,
+								pageSize: 10
+							},
+				payInfo:{
+					addressDetails: "",
+					cardNo: "",
+					city: "",
+					county: "",
+					expressNo: null,
+					freight: null,
+					hospitalCardNo: "",
+					hospitalId: null,
+					id: null,
+					name: "",
+					printAmount: null,
+					printNum: null,
+					province: "",
+					receiveMobile: "",
+					receiveName: "",
+					sex: 0,
+					status: 1,
+					totalAmount: null,
+					userId: 4
+				}
 			};
 		},
-		// onLoad() {
-		// 	// 判断如果本地token 存在，则直接获取源列表； 
-		// 	if(uni.getStorageSync('Authorization')){
-				
-		// 		this.handleGetHospitalList()
-		// 	}else{
-		// 		//否则进行登录，暂时code写死，
-				
-		// 		this.handleAccountLogin()
-		// 	}
-		// },
+		mounted(){
+		 this.getApplyList();
+		 this.getHospitalPayInfo();
+		},
 		methods: {
 			/**
-			 * 
-			 * @description  获取打印申请详细信息
+			 * @description  获取医院详情
 			 * */
-			ApplyID(){
-				// 挂载时执行调用接口请求
-				let params = patment;
-				console.log(params);
-				indexApi.getHospitalPay(params)
+			getHospitalPayInfo(){
+				// 挂载时执行调用接口请求  /暂时写死
+				let _this=this;
+				let parmas={
+					id:8
+				};
+				indexApi.getHospitalPay(parmas)
 				.then(res=>{
 					if(res&&res.code==200){
 						console.log(res);
-						// let token=res.token;
-						// uni.setStorageSync('Authorization',token)
-						// this.handleGetHospitalList()
+						_this.payInfo=res.data;
+						
 					}
 				})
 				.catch(err=>{
 					console.error(err);
 				})
-			}
+			},
+			/**
+			 * 
+			 * @description  获取打印申请详细信息
+			 * */
+			getApplyList(){
+				// 挂载时执行调用接口请求
+				let parmas=this.queryform;
+				indexApi.getApplylist(parmas)
+				.then(res=>{
+					if(res&&res.code==200){
+						console.log(res);
+						
+					}
+				})
+				.catch(err=>{
+					console.error(err);
+				})
+			},
+			payClick(){
+				uni.navigateTo({
+					url: '../index/index'
+				});
+			},
+			cancelpayClick(){
+				uni.navigateTo({
+					url: '../submitInfo/submitInfo'
+				});
+			},
 		}
 	}
 </script>

@@ -29,6 +29,19 @@ const indexApi = {
 		  params:params
 		})
     },
+	
+	/**
+	 * 
+	 * @description  /api/wu/apply/getlist 获取打印申请列表
+	 * */
+	 getApplylist(params){
+	 	return request({
+	 	  method: 'Get', 
+	 	  url: '/api/wu/apply/getlist',
+	 	  params:params
+	 	})
+	 },
+	 
     /**
      * 
      * @description '/api/wu/apply/applySub', 打印申请提交
@@ -61,8 +74,8 @@ const indexApi = {
 	getHospitalPay(params){
 		return request({
 			method:'Get',
-			url:'/api/wu/apply/{id}',
-			params:params
+			url:`/api/wu/apply/${params.id}`,
+			
 		})
 	},
 }
