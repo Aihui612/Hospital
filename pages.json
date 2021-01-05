@@ -18,7 +18,16 @@
 				"navigationBarTitleText": "支付"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/applylist/applylist",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "病例申请记录",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

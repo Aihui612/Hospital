@@ -2,8 +2,8 @@
 	<view class="content">
 		<view class="back-grounp" :style="{backgroundImage: 'url('+imageURL+')'}">
 			<view class="circle-state">
-				<view class="pay-state">已申请</view>
-				<view class="slow-color">待付款状态色值</view>
+				<view class="pay-state" v-if="payInfo.status==1">已申请</view>
+				<view class="slow-color" v-else>待付款</view>
 			</view>	
 			<view class="list-name">
 				<view class="item">姓名</view>
@@ -29,7 +29,7 @@
 			</view>
 			<view class="list-name">
 				<view class="item">邮寄费用</view>
-				<view class="attribute">{{payInfo.expressNo}}元</view>
+				<view class="attribute">{{payInfo.Freight}}元</view>
 			</view>
 			<view class="cut-off2"></view>
 			<view class="add-on">
@@ -51,15 +51,13 @@
 
 <script>
 	import indexApi from '../../serves/api.js';	
+	import config from '../../serves/config.js';
 	export default {
 	
 		data() {
 			return {
 				imageURL: "/static/image_list.png",
-				queryform: {
-								pageNum: 1,
-								pageSize: 10
-							},
+				id:null,
 				payInfo:{
 					addressDetails: "",
 					cardNo: "",
@@ -83,8 +81,10 @@
 				}
 			};
 		},
+		onLoad(option) {
+			this.id=option.id;
+		},
 		mounted(){
-		 this.getApplyList();
 		 this.getHospitalPayInfo();
 		},
 		methods: {
@@ -94,8 +94,9 @@
 			getHospitalPayInfo(){
 				// 挂载时执行调用接口请求  /暂时写死
 				let _this=this;
+				let id=_this.id;
 				let parmas={
-					id:8
+					id
 				};
 				indexApi.getHospitalPay(parmas)
 				.then(res=>{
@@ -110,27 +111,57 @@
 				})
 			},
 			/**
-			 * 
-			 * @description  获取打印申请详细信息
+			 * @description  调用支付；
+			 * https://uniapp.dcloud.io/api/plugins/payment?id=requestpayment
+			 * uni.requestPayment(OBJECT)
+			 * 	appId: "wxf8ebea952e73aaa8"
+				nonceStr: "GN7mN2TNyOWmLF2hb1QDrjO98j4NxPUc"
+				package: "prepay_id=wx05233307840272c4d90310ac37cee60000"
+				paySign: "30562640A6E22C2F6C1F763AD66505CA7574FDAB75D7A3213ADE54D209B4D828"
+				signType: "MD5"
+				timeStamp: "1609860787"
 			 * */
-			getApplyList(){
-				// 挂载时执行调用接口请求
-				let parmas=this.queryform;
-				indexApi.getApplylist(parmas)
+			payClick(){
+				let id=this.id
+				let params={
+					  "applyId": id,
+					  "payChannel": "WX",
+					  "tradeType": "JSAPI"
+					}
+				indexApi.postPayInfo(params)
 				.then(res=>{
+					console.log(res);
 					if(res&&res.code==200){
 						console.log(res);
+						let payinfo=res.data.data;
+						
+						// 调用支付
+						uni.requestPayment({
+						    provider: 'wxpay',
+						    timeStamp: String(Date.now()),
+						    nonceStr: payinfo.nonceStr,
+						    package: payinfo.package,
+						    signType: payinfo.signType,
+						    paySign: payinfo.paySign,
+						    success: function (res) {
+						        console.log('success:' + JSON.stringify(res));
+						    },
+						    fail: function (err) {
+						        console.log('fail:' + JSON.stringify(err));
+						    }
+						});
+					
 						
 					}
 				})
 				.catch(err=>{
 					console.error(err);
 				})
-			},
-			payClick(){
-				uni.navigateTo({
-					url: '../index/index'
-				});
+				
+				
+				// uni.navigateTo({
+				// 	url: '../index/index'
+				// });
 			},
 			cancelpayClick(){
 				uni.navigateTo({
@@ -185,17 +216,18 @@
 					// margin-right: 296rpx;
 					margin-bottom: 28rpx;
 				}
-			    .slow-color{
-			    	margin-top: 27rpx;
-			    	margin-right: 0rpx;
+			    .slow-color{				
+					width: auto;
+					height: 34rpx;
+					font-size: 30rpx;
+					font-family: PingFang SC;
+					font-weight: 600;
+					color: #FF7C42;
+					//line-height: 36rpx;
+					margin-top: 28rpx;
+					margin-left: 234rpx;
+					// margin-right: 296rpx;
 					margin-bottom: 28rpx;
-			    	width: 108px;
-			    	height: 35px;
-			    	font-size: 14px;
-			    	font-family: PingFang SC;
-			    	font-weight: 100;
-			    	color: #FF7C42;
-			    	line-height: 36px;
 			        }	
 			}
 			.list-name{

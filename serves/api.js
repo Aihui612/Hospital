@@ -78,6 +78,18 @@ const indexApi = {
 			
 		})
 	},
+	
+	/**
+	 * 
+	 * @description api/wu/payinfo 发起付款
+	*/
+	postPayInfo(params){
+		return request({
+		  method: 'Post', 
+		  url: '/api/wu/payinfo',
+		  params: params
+		})
+	}
 }
 
 

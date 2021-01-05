@@ -3,6 +3,24 @@
 		<view  class="img-container">
 			<image class="logo" src="/static/banner.png"></image>
 		</view>
+		<view class="btn-list">
+			<view class="message-open" @click="handleMessageOpen">
+				<view class="text-ch">
+					开启提醒
+				</view>
+				<veiw class='text-en'>
+					Turn on reminder
+				</veiw>
+			</view>
+			<view class="apply-record" @click="handleApplyRecord">
+				<view class="text-ch">
+				申请记录
+				</view>
+				<veiw class='text-en'>
+					Application record
+				</veiw>
+			</view>
+		</view>
 		<view class="list-container">
 				<template v-for="item in hospitalList" >
 					<view class="item" @click="handleClick(item.id)" :key="item.id">
@@ -15,10 +33,6 @@
 				</template>
 
 	  </view>
-	  <view class="subscribe">
-	  			<text style="font-size: 32rpx;">订阅消息</text>
-	  			<button class="btn" @click="submsg">开启</button>
-	  		</view>
 		
 	</view>
 </template>
@@ -51,6 +65,14 @@ import config from '../../serves/config.js';
 	
 		},
 		methods: {
+			/**
+			 * @description  跳转申请列表
+			 * */
+			 handleApplyRecord(){
+				uni.navigateTo({
+					url: `../applylist/applylist`
+				});
+			 },
 			/**
 			 * @description  账号登录
 			 * */
@@ -143,7 +165,8 @@ import config from '../../serves/config.js';
 					url: `../submitInfo/submitInfo?id=${id}`
 				});
 			},
-					submsg() {
+					handleMessageOpen() {
+						 // b9DOmpy8Qnbr9ZK089HPYypC4wmsyxOlg-fUDB8O6tM  7qzSgRjyAk2jmANUNTbrT3MHbu-9scy8Q0ELMterktE
 						  wx.requestSubscribeMessage({
 						    tmplIds: ['QKEerV3BKmZIgI0gUnj8ycMS4O99Oa_rvFqNp9QZxg8','ct2AMvcibFdujj612Gzvorg-U4KKdcvjiKHTktcaUsk','3EnKZ92phO4pHIvIzn-3s71KhJxUoMWgiTdLyqvtrw4'],
 						    success(res) {
@@ -154,9 +177,10 @@ import config from '../../serves/config.js';
 										  
 						      if (errMsg == 'requestSubscribeMessage:ok') {
 						        //用户同意了订阅，允许订阅消息
-						        wx.showToast({
-						          title: '订阅成功'
-						        })
+								wx.showToast({
+								  title: '订阅成功'
+								})
+				
 						      } else {
 						        //用户拒绝了订阅，禁用订阅消息
 						        wx.showToast({
@@ -192,12 +216,83 @@ import config from '../../serves/config.js';
 				height: inherit;
 			}
 		}
+		.btn-list{
+			position: absolute;
+			top: 275rpx;
+			width: 100%;
+			height: 130rpx;
+			
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			margin-bottom: 31rpx;
+			.message-open{
+				background: url(../../static/message-open.png) no-repeat 100% 100%;
+				width: 310rpx;
+				height: 130rpx;
+				.text-ch{
+					width: auto;
+					height: 31rpx;
+					font-size: 32rpx;
+					font-family: PingFang SC;
+					font-weight: 600;
+					color: #FFFFFF;
+					line-height: 36rpx;
+					margin-left: 118rpx;
+					margin-top: 35rpx;
+
+				}
+				.text-en{
+					width: auto;
+					height: 15rpx;
+					font-size: 20rpx;
+					font-family: PingFang SC;
+					font-weight: 500;
+					color: #FFFFFF;
+					line-height: 36rpx;
+					margin-left: 118rpx;
+
+				}
+				
+			}
+			.apply-record{
+				background: url(../../static/apply-record.png) no-repeat 100% 100%;
+				width: 310rpx;
+				height: 130rpx;
+				
+				.text-ch{
+					width: auto;
+					height: 31rpx;
+					font-size: 32rpx;
+					font-family: PingFang SC;
+					font-weight: 600;
+					color: #FFFFFF;
+					line-height: 36rpx;
+					margin-left: 118rpx;
+					margin-top: 35rpx;
+				
+				}
+				.text-en{
+					width: auto;
+					height: 15rpx;
+					font-size: 20rpx;
+					font-family: PingFang SC;
+					font-weight: 500;
+					color: #FFFFFF;
+					line-height: 36rpx;
+					margin-left: 118rpx;
+				
+				}
+				
+			}
+		}
 		.list-container{
 			display: flex;
 			flex-direction: column;
 			justify-content: flex-start;
 			align-items: center;
-			padding-top: 50rpx;
+			padding-top: 81rpx;
 			
 			 .item{
 				 display: flex;

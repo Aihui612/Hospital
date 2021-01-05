@@ -60,16 +60,15 @@
   margin-bottom: 28rpx;
 }
 .content .back-grounp .circle-state .slow-color {
-  margin-top: 27rpx;
-  margin-right: 0rpx;
-  margin-bottom: 28rpx;
-  width: 108px;
-  height: 35px;
-  font-size: 14px;
+  width: auto;
+  height: 34rpx;
+  font-size: 30rpx;
   font-family: PingFang SC;
-  font-weight: 100;
+  font-weight: 600;
   color: #FF7C42;
-  line-height: 36px;
+  margin-top: 28rpx;
+  margin-left: 234rpx;
+  margin-bottom: 28rpx;
 }
 .content .back-grounp .list-name {
   display: -webkit-box;

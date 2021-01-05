@@ -57,6 +57,24 @@
         {
           "name": "pages/payment/payment",
           "pathName": "pages/payment/payment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/applylist/applylist",
+          "pathName": "pages/applylist/applylist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/payment/payment",
+          "pathName": "pages/payment/payment",
           "scene": null
         }
       ]

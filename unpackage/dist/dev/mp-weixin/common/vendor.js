@@ -8117,6 +8117,18 @@ var indexApi = {
       url: "/api/wu/apply/".concat(params.id) });
 
 
+  },
+
+  /**
+      * 
+      * @description api/wu/payinfo 发起付款
+     */
+  postPayInfo: function postPayInfo(params) {
+    return (0, _request.request)({
+      method: 'Post',
+      url: '/api/wu/payinfo',
+      params: params });
+
   } };var _default =
 
 
@@ -8375,7 +8387,8 @@ function erry(e) {
 
 // swagger 地址  http://syc320.320.io/swagger-ui.html 
 module.exports = {
-  loadUrl: 'http://syc320.320.io' };
+  loadUrl: 'http://syc320.320.io',
+  appid: 'wxf8ebea952e73aaa8' };
 
 /***/ }),
 /* 20 */,

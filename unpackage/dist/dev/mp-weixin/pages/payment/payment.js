@@ -182,7 +182,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */ 17));
+var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -233,36 +234,66 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */
 //
 //
 //
-var _default = { data: function data() {return { imageURL: "/static/image_list.png", queryform: { pageNum: 1, pageSize: 10 }, payInfo: { addressDetails: "", cardNo: "", city: "", county: "", expressNo: null, freight: null, hospitalCardNo: "", hospitalId: null, id: null, name: "", printAmount: null, printNum: null, province: "", receiveMobile: "", receiveName: "", sex: 0, status: 1, totalAmount: null, userId: 4 } };}, mounted: function mounted() {this.getApplyList();this.getHospitalPayInfo();}, methods: { /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description  获取医院详情
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * */getHospitalPayInfo: function getHospitalPayInfo() {// 挂载时执行调用接口请求  /暂时写死
-      var _this = this;var parmas = { id: 8 };_api.default.getHospitalPay(parmas).then(function (res) {if (res && res.code == 200) {console.log(res);_this.payInfo = res.data;}}).
+var _default = { data: function data() {return { imageURL: "/static/image_list.png", id: null, payInfo: { addressDetails: "", cardNo: "", city: "", county: "", expressNo: null, freight: null, hospitalCardNo: "", hospitalId: null, id: null, name: "", printAmount: null, printNum: null, province: "", receiveMobile: "", receiveName: "", sex: 0, status: 1, totalAmount: null, userId: 4 } };}, onLoad: function onLoad(option) {this.id = option.id;}, mounted: function mounted() {this.getHospitalPayInfo();}, methods: { /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    * @description  获取医院详情
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    * */getHospitalPayInfo: function getHospitalPayInfo() {// 挂载时执行调用接口请求  /暂时写死
+      var _this = this;var id = _this.id;var parmas = { id: id };_api.default.getHospitalPay(parmas).then(function (res) {if (res && res.code == 200) {console.log(res);_this.payInfo = res.data;}}).
       catch(function (err) {
         console.error(err);
       });
     },
     /**
-        * 
-        * @description  获取打印申请详细信息
+        * @description  调用支付；
+        * https://uniapp.dcloud.io/api/plugins/payment?id=requestpayment
+        * uni.requestPayment(OBJECT)
+        * 	appId: "wxf8ebea952e73aaa8"
+       	nonceStr: "GN7mN2TNyOWmLF2hb1QDrjO98j4NxPUc"
+       	package: "prepay_id=wx05233307840272c4d90310ac37cee60000"
+       	paySign: "30562640A6E22C2F6C1F763AD66505CA7574FDAB75D7A3213ADE54D209B4D828"
+       	signType: "MD5"
+       	timeStamp: "1609860787"
         * */
-    getApplyList: function getApplyList() {
-      // 挂载时执行调用接口请求
-      var parmas = this.queryform;
-      _api.default.getApplylist(parmas).
+    payClick: function payClick() {
+      var id = this.id;
+      var params = {
+        "applyId": id,
+        "payChannel": "WX",
+        "tradeType": "JSAPI" };
+
+      _api.default.postPayInfo(params).
       then(function (res) {
+        console.log(res);
         if (res && res.code == 200) {
           console.log(res);
+          var payinfo = res.data.data;
+
+          // 调用支付
+          uni.requestPayment({
+            provider: 'wxpay',
+            timeStamp: String(Date.now()),
+            nonceStr: payinfo.nonceStr,
+            package: payinfo.package,
+            signType: payinfo.signType,
+            paySign: payinfo.paySign,
+            success: function success(res) {
+              console.log('success:' + JSON.stringify(res));
+            },
+            fail: function fail(err) {
+              console.log('fail:' + JSON.stringify(err));
+            } });
+
+
 
         }
       }).
       catch(function (err) {
         console.error(err);
       });
-    },
-    payClick: function payClick() {
-      uni.navigateTo({
-        url: '../index/index' });
 
+
+      // uni.navigateTo({
+      // 	url: '../index/index'
+      // });
     },
     cancelpayClick: function cancelpayClick() {
       uni.navigateTo({

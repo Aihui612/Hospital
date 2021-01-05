@@ -161,6 +161,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */ 17));
 var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var _default =
 
@@ -189,8 +203,16 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config
   },
   methods: {
     /**
-              * @description  账号登录
+              * @description  跳转申请列表
               * */
+    handleApplyRecord: function handleApplyRecord() {
+      uni.navigateTo({
+        url: "../applylist/applylist" });
+
+    },
+    /**
+        * @description  账号登录
+        * */
     handleAccountLogin: function handleAccountLogin() {
       var _this = this;
       uni.login({
@@ -280,7 +302,8 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config
         url: "../submitInfo/submitInfo?id=".concat(id) });
 
     },
-    submsg: function submsg() {
+    handleMessageOpen: function handleMessageOpen() {
+      // b9DOmpy8Qnbr9ZK089HPYypC4wmsyxOlg-fUDB8O6tM  7qzSgRjyAk2jmANUNTbrT3MHbu-9scy8Q0ELMterktE
       wx.requestSubscribeMessage({
         tmplIds: ['QKEerV3BKmZIgI0gUnj8ycMS4O99Oa_rvFqNp9QZxg8', 'ct2AMvcibFdujj612Gzvorg-U4KKdcvjiKHTktcaUsk', '3EnKZ92phO4pHIvIzn-3s71KhJxUoMWgiTdLyqvtrw4'],
         success: function success(res) {
@@ -293,6 +316,7 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config
             //用户同意了订阅，允许订阅消息
             wx.showToast({
               title: '订阅成功' });
+
 
           } else {
             //用户拒绝了订阅，禁用订阅消息
