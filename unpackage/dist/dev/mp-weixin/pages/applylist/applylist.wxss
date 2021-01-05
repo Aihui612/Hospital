@@ -142,7 +142,6 @@
   font-weight: 600;
   color: #575757;
   line-height: 36rpx;
-  margin-bottom: 25rpx;
 }
 .content .list-container .list-item .hospital-info .hospital-name {
   width: auto;

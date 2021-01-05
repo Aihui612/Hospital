@@ -7,8 +7,8 @@
 					<view v-else class="unpayed"><text class="text">待付款</text></view>
 					
 					<view class="hospital-info">
-						<view class="hospital-block">产科一区</view>
-						<view class="hospital-name">{{item.hospitalName}}</view>
+						<view class="hospital-block">{{item.hospitalName}}</view>
+						<!-- <view class="hospital-name"></view> -->
 					</view>
 					<view class="apply-time">{{item.createTime}}</view>
 				</view>
@@ -42,6 +42,7 @@
 			/**
 			 * 
 			 * @description  获取打印申请详细信息
+			 * // 下拉待处理
 			 * */
 					
 			handleApplyList(){
@@ -153,7 +154,6 @@
 						font-weight: 600;
 						color: #575757;
 						line-height: 36rpx;
-						margin-bottom: 25rpx;
 
 					}
 					.hospital-name{

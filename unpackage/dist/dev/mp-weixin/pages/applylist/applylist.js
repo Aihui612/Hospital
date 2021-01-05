@@ -174,6 +174,7 @@ var _default = { data: function data() {return { applyList: [], queryform: { pag
     /**
         * 
         * @description  获取打印申请详细信息
+        * // 下拉待处理
         * */
 
     handleApplyList: function handleApplyList() {var _this = this;
