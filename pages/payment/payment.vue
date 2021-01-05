@@ -112,7 +112,9 @@
 			},
 			/**
 			 * @description  调用支付；
+			 * 
 			 * https://uniapp.dcloud.io/api/plugins/payment?id=requestpayment
+			 * 
 			 * uni.requestPayment(OBJECT)
 			 * 	appId: "wxf8ebea952e73aaa8"
 				nonceStr: "GN7mN2TNyOWmLF2hb1QDrjO98j4NxPUc"
