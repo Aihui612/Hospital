@@ -169,7 +169,26 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */
 //
 //
 //
-var _default = { data: function data() {return { applyList: [], queryform: { pageNum: 1, pageSize: 10 } };}, mounted: function mounted() {this.handleApplyList();}, methods: { handleClickItem: function handleClickItem(id) {console.log(id);uni.navigateTo({ url: "../payment/payment?id=".concat(id) });
+var _default = { data: function data() {return { applyList: [], queryform: { pageNum: 1, pageSize: 10 }, total: null };}, mounted: function mounted() {this.handleApplyList();}, onReachBottom: function onReachBottom() {var self = this; // 显示加载图标
+    var total = this.total;var page = this.queryform.pageNum;var pageSize = this.queryform.pageSize;
+    if (pageSize < total) {
+      // page++;
+      pageSize += 10;
+      self.queryform.pageSize = pageSize;
+
+      wx.showToast({
+        title: '更多加载中' });
+
+      self.handleApplyList();
+    }
+
+  },
+  methods: {
+    handleClickItem: function handleClickItem(id) {
+      console.log(id);
+      uni.navigateTo({
+        url: "../payment/payment?id=".concat(id) });
+
     },
     /**
         * 
@@ -186,6 +205,7 @@ var _default = { data: function data() {return { applyList: [], queryform: { pag
           var applyList = res.rows;
 
           _this.applyList = applyList;
+          _this.total = res.total;
         }
       }).
       catch(function (err) {

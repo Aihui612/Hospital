@@ -147,9 +147,36 @@
 						    paySign: payinfo.paySign,
 						    success: function (res) {
 						        console.log('success:' + JSON.stringify(res));
+								// b9DOmpy8Qnbr9ZK089HPYypC4wmsyxOlg-fUDB8O6tM  7qzSgRjyAk2jmANUNTbrT3MHbu-9scy8Q0ELMterktE
+								 wx.requestSubscribeMessage({
+								   tmplIds: ['b9DOmpy8Qnbr9ZK089HPYypC4wmsyxOlg-fUDB8O6tM','7qzSgRjyAk2jmANUNTbrT3MHbu-9scy8Q0ELMterktE'],
+								   success(res) {
+										console.log(res);
+										let errMsg=res.errMsg;
+										console.log(errMsg);
+										console.log(errMsg == 'requestSubscribeMessage:ok');
+																		  
+								     if (errMsg == 'requestSubscribeMessage:ok') {
+								       //用户同意了订阅，允许订阅消息
+										wx.showToast({
+										  title: '订阅成功'
+										})
+												
+								     } else {
+								       //用户拒绝了订阅，禁用订阅消息
+								       wx.showToast({
+								         title: '订阅失败'
+								       })
+								     }
+								   },
+								   fail(err) {
+								     console.error(err)
+								   }
+								 })
 						    },
 						    fail: function (err) {
 						        console.log('fail:' + JSON.stringify(err));
+								
 						    }
 						});
 					

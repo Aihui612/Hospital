@@ -266,38 +266,7 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config
         console.error(err);
       });
     },
-
-
-    // https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect
-    getCode: function getCode() {// 非静默授权，第一次有弹框
-      // this.code = ''
-      // var local = window.location.href // 获取页面url
-      var local = 'http://linshi2.shunlukeji.com';
-      var appid = 'wxa7c54270e26812ff';
-      this.code = this.getUrlCode().code; // 截取code
-      console.log('asdasdfadfas', this.code);
-      if (this.code == null || this.code === '') {// 如果没有code，则去请求
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".concat(appid, "&redirect_uri=").concat(encodeURIComponent(local), "&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect");
-        console.log(this.code);
-      } else {
-        // 你自己的业务逻辑
-      }
-    },
-    getUrlCode: function getUrlCode() {// 截取url中的code方法
-      var url = location.search;
-      this.winUrl = url;
-      var theRequest = new Object();
-      if (url.indexOf("?") != -1) {
-        var str = url.substr(1);
-        var strs = str.split("&");
-        for (var i = 0; i < strs.length; i++) {
-          theRequest[strs[i].split("=")[0]] = strs[i].split("=")[1];
-        }
-      }
-      return theRequest;
-    },
     handleClick: function handleClick(id) {
-      console.log(id);
       uni.navigateTo({
         url: "../submitInfo/submitInfo?id=".concat(id) });
 

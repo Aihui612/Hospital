@@ -27,10 +27,29 @@
 								pageNum: 1,
 								pageSize: 10
 							},
+				total:null
 			};
 		},
 		mounted() {
 			this.handleApplyList();
+		},
+		onReachBottom() {
+			 let self = this;		
+				    // 显示加载图标
+					let total=this.total;
+					let page=this.queryform.pageNum;
+					let pageSize=this.queryform.pageSize;
+					if(pageSize<total){
+						// page++;
+						pageSize+=10;
+						self.queryform.pageSize=pageSize;
+						
+						wx.showToast({
+						  title: '更多加载中'
+						})
+						self.handleApplyList();
+					}
+		
 		},
 		methods:{
 			handleClickItem(id){
@@ -54,6 +73,7 @@
 							let applyList=res.rows;
 						
 							this.applyList=applyList;
+							this.total=res.total;
 						}
 					})
 					.catch(err=>{
