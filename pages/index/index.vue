@@ -140,11 +140,11 @@ import config from '../../serves/config.js';
 						    tmplIds: ['QKEerV3BKmZIgI0gUnj8ycMS4O99Oa_rvFqNp9QZxg8','ct2AMvcibFdujj612Gzvorg-U4KKdcvjiKHTktcaUsk','3EnKZ92phO4pHIvIzn-3s71KhJxUoMWgiTdLyqvtrw4'],
 						    success(res) {
 								console.log(res);
-								let errMsg=res.errMsg;
+								let errMsg=res.QKEerV3BKmZIgI0gUnj8ycMS4O99Oa_rvFqNp9QZxg8;
 								console.log(errMsg);
-									console.log(errMsg == 'requestSubscribeMessage:ok');
+									console.log(errMsg == '"accept"');
 										  
-						      if (errMsg == 'requestSubscribeMessage:ok') {
+						      if (errMsg == '"accept"') {
 						        //用户同意了订阅，允许订阅消息
 								wx.showToast({
 								  title: '订阅成功'
