@@ -272,7 +272,7 @@ var _default = { data: function data() {return { imageURL: "/static/image_list.p
           // 调用支付
           uni.requestPayment({
             provider: 'wxpay',
-            timeStamp: String(Date.now()),
+            timeStamp: payinfo.timeStamp,
             nonceStr: payinfo.nonceStr,
             package: payinfo.package,
             signType: payinfo.signType,
