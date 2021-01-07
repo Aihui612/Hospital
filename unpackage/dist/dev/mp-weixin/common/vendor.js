@@ -8329,7 +8329,7 @@ function erry(e) {
 
     if (e.data.msg.indexOf('请先登录后才能操作') != -1) {
       uni.removeStorageSync('Authorization');
-      uni.navigateTo({
+      uni.redirectTo({
         url: '/pages/index/index' });
 
     }}
