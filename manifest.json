@@ -77,7 +77,7 @@
             "proxy" : {
                 "/prod-api" : {
                     //"target" : "https://admin.shunlukeji.com",
-                    "target" : "http://syc320.320.io/",
+                    "target" : "http://linshi2.shunlukeji.com/",
                     "changeOrigin" : true,
                     "pathRewrite" : {
                         "^/prod-api" : "" //线上接口注释,线下接口取消注释
