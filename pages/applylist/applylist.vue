@@ -164,7 +164,7 @@
 				.payed{
 					width: 86rpx;
 					height: 52rpx;
-					background: #a6d6a0;
+					background: #e4fff3;
 									
 					border-radius: 4rpx;
 					margin-left: 23rpx;

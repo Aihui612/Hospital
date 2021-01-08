@@ -5,7 +5,7 @@
 				<view class="pay-state" v-if="payInfo.status==1">已申请</view>
 				<view class="slow-color" v-else-if="payInfo.status==2">待付款</view>
 				<view class="slow-color-payed" v-else-if="payInfo.status==3">已支付</view>
-				<view class="slow-color" v-else-if="payInfo.status==4">已邮寄</view>
+				<view class="slow-color-payed" v-else-if="payInfo.status==4">已邮寄</view>
 				<view class="slow-color-reject" v-else>已拒绝</view>
 			</view>	
 			<view class="list-name">
