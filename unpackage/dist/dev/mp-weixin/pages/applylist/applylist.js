@@ -150,6 +150,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -169,12 +172,12 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */
 //
 //
 //
+//
+//
+//
 var _default = { data: function data() {return { applyList: [], queryform: { pageNum: 1, pageSize: 10 }, total: null };}, mounted: function mounted() {this.handleApplyList();}, onReachBottom: function onReachBottom() {var self = this; // 显示加载图标
-    var total = this.total;var page = this.queryform.pageNum;var pageSize = this.queryform.pageSize;
-    if (pageSize < total) {
-      // page++;
-      pageSize += 10;
-      self.queryform.pageSize = pageSize;
+    var total = this.total;var page = this.queryform.pageNum;var pageSize = this.queryform.pageSize;if (pageSize < total) {// page++;
+      pageSize += 10;self.queryform.pageSize = pageSize;
 
       wx.showToast({
         title: '更多加载中' });

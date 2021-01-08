@@ -4,7 +4,10 @@
 			<template v-for="item in applyList">
 				<view class="list-item" :key='item.id' @click="handleClickItem(item.id)">
 					<view v-if="item.status==1" class="applyed"><text class="text">已申请</text></view>
-					<view v-else class="unpayed"><text class="text">待付款</text></view>
+					<view v-else-if="item.status==2" class="unpayed"><text class="text">待付款</text></view>
+					<view v-else-if="item.status==3" class="payed"><text class="text">已支付</text></view>
+					<view v-else-if="item.status==4" class="payed"><text class="text">已邮寄</text></view>
+					<view v-else class="rejected"><text class="text">已拒绝</text></view>
 					
 					<view class="hospital-info">
 						<view class="hospital-block">{{item.hospitalName}}</view>
@@ -157,6 +160,54 @@
 				
 					}
 				
+				}
+				.payed{
+					width: 86rpx;
+					height: 52rpx;
+					background: #a6d6a0;
+									
+					border-radius: 4rpx;
+					margin-left: 23rpx;
+					display: flex;
+					flex-direction: row;
+					justify-content: center;
+					align-items: center;
+					.text{
+						width: auto;
+						display: block;
+						height: auto;
+						font-size: 24rpx;
+						font-family: PingFang SC;
+						font-weight: 500;
+						color: #1ddb1c;
+						line-height: 36rpx;
+									
+					}
+					
+				}
+				.rejected{
+				width: 86rpx;
+				height: 52rpx;
+				background: #ffe5da;
+								
+				border-radius: 4rpx;
+				margin-left: 23rpx;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				.text{
+					width: auto;
+					display: block;
+					height: auto;
+					font-size: 24rpx;
+					font-family: PingFang SC;
+					font-weight: 500;
+					color: #fc000c;
+					line-height: 36rpx;
+								
+				}
+					
 				}
 				.hospital-info{
 					width: auto;
