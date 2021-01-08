@@ -182,8 +182,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */ 17));
 var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -237,29 +257,19 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config
 var _default = { data: function data() {return { imageURL: "/static/image_list.png", id: null, payInfo: { addressDetails: "", cardNo: "", city: "", county: "", expressNo: null, freight: null, hospitalCardNo: "", hospitalId: null, id: null, name: "", printAmount: null, printNum: null, province: "", receiveMobile: "", receiveName: "", sex: 0, status: 1, totalAmount: null, userId: 4 } };}, onLoad: function onLoad(option) {this.id = option.id;}, mounted: function mounted() {this.getHospitalPayInfo();}, methods: { /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     * @description  获取医院详情
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     * */getHospitalPayInfo: function getHospitalPayInfo() {// 挂载时执行调用接口请求  /暂时写死
-      var _this = this;var id = _this.id;var parmas = { id: id };_api.default.getHospitalPay(parmas).then(function (res) {if (res && res.code == 200) {console.log(res);_this.payInfo = res.data;}}).
-      catch(function (err) {
-        console.error(err);
-      });
-    },
-    /**
-        * @description  调用支付；
-        * 
-        * https://uniapp.dcloud.io/api/plugins/payment?id=requestpayment
-        * 
-        * uni.requestPayment(OBJECT)
-        * 	appId: "wxf8ebea952e73aaa8"
-       	nonceStr: "GN7mN2TNyOWmLF2hb1QDrjO98j4NxPUc"
-       	package: "prepay_id=wx05233307840272c4d90310ac37cee60000"
-       	paySign: "30562640A6E22C2F6C1F763AD66505CA7574FDAB75D7A3213ADE54D209B4D828"
-       	signType: "MD5"
-       	timeStamp: "1609860787"
-        * */
-    payClick: function payClick() {
-      var id = this.id;
-      var params = {
-        "applyId": id,
-        "payChannel": "WX",
+      var _this = this;var id = _this.id;var parmas = { id: id };_api.default.getHospitalPay(parmas).then(function (res) {if (res && res.code == 200) {console.log(res);_this.payInfo = res.data;}}).catch(function (err) {console.error(err);});}, /**
+                                                                                                                                                                                                                                                     * @description  调用支付；
+                                                                                                                                                                                                                                                     * 
+                                                                                                                                                                                                                                                     * https://uniapp.dcloud.io/api/plugins/payment?id=requestpayment
+                                                                                                                                                                                                                                                     * 
+                                                                                                                                                                                                                                                     * uni.requestPayment(OBJECT)
+                                                                                                                                                                                                                                                     * 	appId: "wxf8ebea952e73aaa8"
+                                                                                                                                                                                                                                                    	nonceStr: "GN7mN2TNyOWmLF2hb1QDrjO98j4NxPUc"
+                                                                                                                                                                                                                                                    	package: "prepay_id=wx05233307840272c4d90310ac37cee60000"
+                                                                                                                                                                                                                                                    	paySign: "30562640A6E22C2F6C1F763AD66505CA7574FDAB75D7A3213ADE54D209B4D828"
+                                                                                                                                                                                                                                                    	signType: "MD5"
+                                                                                                                                                                                                                                                    	timeStamp: "1609860787"
+                                                                                                                                                                                                                                                     * */payClick: function payClick() {var id = this.id;var params = { "applyId": id, "payChannel": "WX",
         "tradeType": "JSAPI" };
 
       _api.default.postPayInfo(params).
@@ -330,8 +340,8 @@ var _default = { data: function data() {return { imageURL: "/static/image_list.p
       // });
     },
     cancelpayClick: function cancelpayClick() {
-      uni.navigateTo({
-        url: '../submitInfo/submitInfo' });
+      uni.navigateBack({
+        delta: 1 });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

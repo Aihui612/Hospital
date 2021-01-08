@@ -3,7 +3,10 @@
 		<view class="back-grounp" >
 			<view class="circle-state">
 				<view class="pay-state" v-if="payInfo.status==1">已申请</view>
-				<view class="slow-color" v-else>待付款</view>
+				<view class="slow-color" v-else-if="payInfo.status==2">待付款</view>
+				<view class="slow-color-payed" v-else-if="payInfo.status==3">已支付</view>
+				<view class="slow-color" v-else-if="payInfo.status==4">已邮寄</view>
+				<view class="slow-color-reject" v-else>已拒绝</view>
 			</view>	
 			<view class="list-name">
 				<view class="item">姓名</view>
@@ -11,8 +14,8 @@
 			</view>
 			<view class="list-name">
 				<view class="item">性别</view>
-				<view  v-if="payInfo.sex==0" class="attribute">男</view>
-				<view  v-if="payInfo.sex==1" class="attribute">女</view>
+				<view  v-if="payInfo.sex==0" class="attribute">女</view>
+				<view  v-if="payInfo.sex==1" class="attribute">男</view>
 			</view>
 		    <view class="list-name">
 				<view class="item">住院号</view>
@@ -21,23 +24,30 @@
 			<view class="cut-off1"></view>
 			<view class="list-cost">
 				<view class="item">打印数量</view>
-				<view class="attribute">{{payInfo.printNum}}</view>
+				
+				<view class="attribute" v-if="payInfo.printNum!==''&&payInfo.printNum!==null&&payInfo.printNum!=undefined">{{payInfo.printNum}}</view>
+				<view class="attribute" v-else>--</view>
 			</view>
 			<view class="list-name">
 				<view class="item">打印费用</view>
-				<view class="attribute">{{payInfo.printAmount}}</view>
+				<view class="attribute" v-if="payInfo.printAmount!==''&&payInfo.printAmount!==null&&payInfo.printAmount!=undefined">{{payInfo.printAmount}}</view>
+				<view class="attribute" v-else>--</view>
 			</view>
 			<view class="list-name">
 				<view class="item">邮寄费用</view>
-				<view class="attribute">{{payInfo.Freight}}元</view>
+				<view class="attribute" v-if="payInfo.printAmount!==''&&payInfo.printAmount!==null&&payInfo.printAmount!==undefined">{{payInfo.Freight}}元</view>
+				<view class="attribute" v-else>--元</view>
 			</view>
 			<view class="cut-off2"></view>
 			<view class="add-on">
-				<view class="major-total">
+				<view class="major-total" v-if="payInfo.totalAmount!==''&&payInfo.totalAmount!==null&&payInfo.totalAmount!==undefined">
 					合计:{{payInfo.totalAmount}}元
 				</view>
+				<view v-else class="major-total">
+					合计:--元
+				</view>
 			</view>
-			<view class="button-container1" @click="payClick">
+			<view class="button-container1" v-if="payInfo.status==2" @click="payClick">
 				<view class="button-pay">支付</view>	
 			</view>
 			<view class="button-container2" @click="cancelpayClick">
@@ -198,8 +208,8 @@
 				// });
 			},
 			cancelpayClick(){
-				uni.navigateTo({
-					url: '../submitInfo/submitInfo'
+				uni.navigateBack({
+				    delta: 1
 				});
 			},
 		}
@@ -266,6 +276,31 @@
 					// margin-right: 296rpx;
 					margin-bottom: 28rpx;
 			        }	
+					.slow-color-payed{
+						width: auto;
+						height: 34rpx;
+						font-size: 30rpx;
+						font-family: PingFang SC;
+						font-weight: 600;
+						color: #4CD964;
+						//line-height: 36rpx;
+						margin-top: 28rpx;
+						margin-left: 234rpx;
+						// margin-right: 296rpx;
+						margin-bottom: 28rpx;
+					}
+					.slow-color-reject{
+						height: 34rpx;
+						font-size: 30rpx;
+						font-family: PingFang SC;
+						font-weight: 600;
+						color: #DD524D;
+						//line-height: 36rpx;
+						margin-top: 28rpx;
+						margin-left: 234rpx;
+						// margin-right: 296rpx;
+						margin-bottom: 28rpx;
+					}
 			}
 			.list-name{
 				display: flex;

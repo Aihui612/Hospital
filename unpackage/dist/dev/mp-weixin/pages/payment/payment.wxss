@@ -74,6 +74,27 @@
   margin-left: 234rpx;
   margin-bottom: 28rpx;
 }
+.content .back-grounp .circle-state .slow-color-payed {
+  width: auto;
+  height: 34rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #4CD964;
+  margin-top: 28rpx;
+  margin-left: 234rpx;
+  margin-bottom: 28rpx;
+}
+.content .back-grounp .circle-state .slow-color-reject {
+  height: 34rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #DD524D;
+  margin-top: 28rpx;
+  margin-left: 234rpx;
+  margin-bottom: 28rpx;
+}
 .content .back-grounp .list-name {
   display: -webkit-box;
   display: -webkit-flex;

@@ -158,7 +158,7 @@
 		        })
 		        return {
 		            title: 'picker',
-		            array: ['男', '女'],
+		            array: ['女', '男'],
 		            index: 0,
 					provinceData: cityDatas,
 					cityData: [],
