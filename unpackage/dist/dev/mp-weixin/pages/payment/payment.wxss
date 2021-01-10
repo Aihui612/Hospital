@@ -13,7 +13,7 @@
   -webkit-align-items: center;
           align-items: center;
   background-color: #0066CC;
-  height: 100vh;
+  height: 100%;
 }
 .content .back-grounp {
   width: 702rpx;

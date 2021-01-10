@@ -17,10 +17,34 @@
 				<view  v-if="payInfo.sex==0" class="attribute">女</view>
 				<view  v-if="payInfo.sex==1" class="attribute">男</view>
 			</view>
+			
+			<view class="list-name">
+				<view class="item">身份证号</view>
+				<view class="attribute">{{payInfo.cardNo}}</view>
+			</view>
 		    <view class="list-name">
 				<view class="item">住院号</view>
 				<view class="attribute">{{payInfo.hospitalCardNo}}</view>
 			</view>
+			<view class="cut-off1"></view>
+			<view class="list-name">
+				<view class="item">收件人姓名</view>
+				<view class="attribute">{{payInfo.receiveName}}</view>
+			</view>
+			<view class="list-name">
+				<view class="item">收件人联系电话</view>
+				<view class="attribute">{{payInfo.receiveMobile}}</view>
+			</view>
+			<view class="list-name">
+				<view class="item">邮寄的地址</view>
+				<view class="attribute" style="font-size: 24rpx;">{{payInfo.province}}{{payInfo.city}}{{payInfo.county}}</view>
+			</view>
+			
+			<view class="list-name">
+				<view class="item">邮寄的地址</view>
+				<view class="attribute" style="font-size: 24rpx;">{{payInfo.addressDetails}}</view>
+			</view>
+			
 			<view class="cut-off1"></view>
 			<view class="list-cost">
 				<view class="item">打印数量</view>
@@ -35,12 +59,12 @@
 			</view>
 			<view class="list-name">
 				<view class="item">邮寄费用</view>
-				<view class="attribute" v-if="payInfo.printAmount!==''&&payInfo.printAmount!==null&&payInfo.printAmount!==undefined">{{payInfo.Freight}}元</view>
+				<view class="attribute" v-if="payInfo.printAmount!==''&&payInfo.printAmount!==null&&payInfo.printAmount!=undefined">{{payInfo.Freight}}元</view>
 				<view class="attribute" v-else>--元</view>
 			</view>
 			<view class="cut-off2"></view>
 			<view class="add-on">
-				<view class="major-total" v-if="payInfo.totalAmount!==''&&payInfo.totalAmount!==null&&payInfo.totalAmount!==undefined">
+				<view class="major-total" v-if="payInfo.totalAmount!==''&&payInfo.totalAmount!==null&&payInfo.totalAmount!=undefined">
 					合计:{{payInfo.totalAmount}}元
 				</view>
 				<view v-else class="major-total">
@@ -169,9 +193,9 @@
 										console.log(res);
 										let errMsg=res.QKEerV3BKmZIgI0gUnj8ycMS4O99Oa_rvFqNp9QZxg8;
 											console.log(errMsg);
-											console.log(errMsg == '"accept"');
+											console.log(errMsg == 'accept');
 																				  
-										if (errMsg == '"accept"') {
+										if (errMsg == 'accept') {
 										  //用户同意了订阅，允许订阅消息
 											wx.showToast({
 											  title: '订阅成功'
@@ -223,7 +247,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		background-color: #0066CC;
-		height: 100vh;
+		height: 100%;
 		// overflow: auto;
 		.back-grounp{
 			width: 702rpx;

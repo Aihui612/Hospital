@@ -192,8 +192,56 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../serves/api.js */ 17));
 var _config = _interopRequireDefault(__webpack_require__(/*! ../../serves/config.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -269,41 +317,17 @@ var _default = { data: function data() {return { imageURL: "/static/image_list.p
                                                                                                                                                                                                                                                     	paySign: "30562640A6E22C2F6C1F763AD66505CA7574FDAB75D7A3213ADE54D209B4D828"
                                                                                                                                                                                                                                                     	signType: "MD5"
                                                                                                                                                                                                                                                     	timeStamp: "1609860787"
-                                                                                                                                                                                                                                                     * */payClick: function payClick() {var id = this.id;var params = { "applyId": id, "payChannel": "WX",
-        "tradeType": "JSAPI" };
-
-      _api.default.postPayInfo(params).
-      then(function (res) {
-        console.log(res);
-        if (res && res.code == 200) {
-          console.log(res);
-          var payinfo = res.data.data;
-
-          // 调用支付
-          uni.requestPayment({
-            provider: 'wxpay',
-            timeStamp: payinfo.timeStamp,
-            nonceStr: payinfo.nonceStr,
-            package: payinfo.package,
-            signType: payinfo.signType,
-            paySign: payinfo.paySign,
-            success: function success(res) {
-              console.log('success:' + JSON.stringify(res));
-              // b9DOmpy8Qnbr9ZK089HPYypC4wmsyxOlg-fUDB8O6tM  7qzSgRjyAk2jmANUNTbrT3MHbu-9scy8Q0ELMterktE
-
+                                                                                                                                                                                                                                                     * */payClick: function payClick() {var id = this.id;var params = { "applyId": id, "payChannel": "WX", "tradeType": "JSAPI" };_api.default.postPayInfo(params).then(function (res) {console.log(res);if (res && res.code == 200) {console.log(res);var payinfo = res.data.data; // 调用支付
+          uni.requestPayment({ provider: 'wxpay', timeStamp: payinfo.timeStamp, nonceStr: payinfo.nonceStr, package: payinfo.package, signType: payinfo.signType, paySign: payinfo.paySign, success: function success(res) {console.log('success:' + JSON.stringify(res)); // b9DOmpy8Qnbr9ZK089HPYypC4wmsyxOlg-fUDB8O6tM  7qzSgRjyAk2jmANUNTbrT3MHbu-9scy8Q0ELMterktE
               // 跳转到首页
-              uni.redirectTo({
-                url: '/pages/index/index' });
-
-              wx.requestSubscribeMessage({
-                tmplIds: ['b9DOmpy8Qnbr9ZK089HPYypC4wmsyxOlg-fUDB8O6tM', '7qzSgRjyAk2jmANUNTbrT3MHbu-9scy8Q0ELMterktE'],
+              uni.redirectTo({ url: '/pages/index/index' });wx.requestSubscribeMessage({ tmplIds: ['b9DOmpy8Qnbr9ZK089HPYypC4wmsyxOlg-fUDB8O6tM', '7qzSgRjyAk2jmANUNTbrT3MHbu-9scy8Q0ELMterktE'],
                 success: function success(res) {
                   console.log(res);
                   var errMsg = res.QKEerV3BKmZIgI0gUnj8ycMS4O99Oa_rvFqNp9QZxg8;
                   console.log(errMsg);
-                  console.log(errMsg == '"accept"');
+                  console.log(errMsg == 'accept');
 
-                  if (errMsg == '"accept"') {
+                  if (errMsg == 'accept') {
                     //用户同意了订阅，允许订阅消息
                     wx.showToast({
                       title: '订阅成功' });

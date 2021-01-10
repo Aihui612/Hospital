@@ -142,9 +142,9 @@ import config from '../../serves/config.js';
 								console.log(res);
 								let errMsg=res.QKEerV3BKmZIgI0gUnj8ycMS4O99Oa_rvFqNp9QZxg8;
 								console.log(errMsg);
-									console.log(errMsg == '"accept"');
+									console.log(errMsg == 'accept');
 										  
-						      if (errMsg == '"accept"') {
+						      if (errMsg == 'accept') {
 						        //用户同意了订阅，允许订阅消息
 								wx.showToast({
 								  title: '订阅成功'
