@@ -498,6 +498,7 @@ var uniPopup = function uniPopup() {__webpack_require__.e(/*! require.ensure | c
     bindPickerChange: function bindPickerChange(e) {
       console.log('picker发送选择改变，携带值为', e.target.value);
       this.index = e.target.value;
+      this.sumbitInfo.sex = e.target.value;
     },
     getDate: function getDate(type) {
       var date = new Date();

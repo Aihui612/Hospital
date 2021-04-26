@@ -362,6 +362,7 @@
 			    bindPickerChange: function(e) {
 			        console.log('picker发送选择改变，携带值为', e.target.value)
 			        this.index = e.target.value
+					this.sumbitInfo.sex=e.target.value;
 			    },
 				getDate(type) {
 				   const date = new Date();
@@ -542,7 +543,7 @@
 							width: 654rpx;
 							height: 76rpx;
 							background: #FFFFFF;
-							border: 1rpx solid #EBEBEB;
+							border: 1rpx solid #332929;
 							border-radius: 10rpx;
 							text-indent: 4rpx;
 
@@ -559,7 +560,7 @@
 						width: 654rpx;
 						height: 76rpx;
 						background: #FFFFFF;
-						border: 1rpx solid #EBEBEB;
+						border: 1rpx solid #332929;
 						border-radius: 10rpx;
 						margin-top: 18rpx;
 						margin-bottom: 40rpx;
@@ -661,7 +662,7 @@
 								width: 654rpx;
 								height: 76rpx;
 								background: #FFFFFF;
-								border: 1rpx solid #EBEBEB;
+								border: 1rpx solid #332929;
 								border-radius: 10rpx;
 								text-indent: 25rpx;
 	
@@ -742,7 +743,7 @@
 							width: 654rpx;
 							height: 100rpx;
 							background: #FFFFFF;
-							border: 1rpx solid #EBEBEB;
+							border: 1rpx solid #332929;
 							border-radius: 10rpx;
 							text-indent: 25rpx;
 						}
@@ -750,7 +751,7 @@
 							width: 654rpx;
 							height: 76rpx;
 							background: #FFFFFF;
-							border: 1rpx solid #EBEBEB;
+							border: 1rpx solid #332929;
 							border-radius: 10rpx;
 							margin-top: 18rpx;
 							margin-bottom: 40rpx;
