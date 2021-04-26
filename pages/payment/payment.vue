@@ -59,7 +59,7 @@
 			</view>
 			<view class="list-name">
 				<view class="item">邮寄费用</view>
-				<view class="attribute" v-if="payInfo.printAmount!==''&&payInfo.printAmount!==null&&payInfo.printAmount!=undefined">{{payInfo.Freight}}元</view>
+				<view class="attribute" v-if="payInfo.freight!==''&&payInfo.freight!==null&&payInfo.freight!=undefined">{{payInfo.freight}}元</view>
 				<view class="attribute" v-else>--元</view>
 			</view>
 			<view class="cut-off2"></view>
